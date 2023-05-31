@@ -1,0 +1,909 @@
+fileFormatVersion: 2
+guid: 6783b5092fc50c9439a0a3557897ccbb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4451447149933199522
+    second: Epic Play Universal Sprite_0
+  - first:
+      213: -7576252581608438777
+    second: Epic Play Universal Sprite_1
+  - first:
+      213: -9212168838072424468
+    second: Epic Play Universal Sprite_2
+  - first:
+      213: 1290790454619281108
+    second: Epic Play Universal Sprite_5
+  - first:
+      213: -7898048957787576190
+    second: Epic Play Universal Sprite_7
+  - first:
+      213: -7218847211920325486
+    second: Epic Play Universal Sprite_8
+  - first:
+      213: 1233093309210363265
+    second: Epic Play Universal Sprite_10
+  - first:
+      213: 4856973030368569110
+    second: Epic Play Universal Sprite_11
+  - first:
+      213: 8530009686200071495
+    second: Epic Play Universal Sprite_12
+  - first:
+      213: 2531190213322220883
+    second: Epic Play Universal Sprite_13
+  - first:
+      213: 5761124394596967286
+    second: Epic Play Universal Sprite_14
+  - first:
+      213: 3950645785151929364
+    second: Epic Play Universal Sprite_15
+  - first:
+      213: 2671173497798404748
+    second: Epic Play Universal Sprite_16
+  - first:
+      213: -9083159898309474599
+    second: Epic Play Universal Sprite_17
+  - first:
+      213: 1389976773152151074
+    second: Epic Play Universal Sprite_18
+  - first:
+      213: 6399459785458784701
+    second: Epic Play Universal Sprite_19
+  - first:
+      213: 6153512331978091669
+    second: Epic Play Universal Sprite_20
+  - first:
+      213: 9149203745957613245
+    second: Epic Play Universal Sprite_21
+  - first:
+      213: -8823559578481746454
+    second: Epic Play Universal Sprite_23
+  - first:
+      213: -8319541131389582843
+    second: Epic Play Universal Sprite_24
+  - first:
+      213: -4478468758655357889
+    second: Epic Play Universal Sprite_25
+  - first:
+      213: 3991420680571585050
+    second: Epic Play Universal Sprite_26
+  - first:
+      213: -3860635740480218815
+    second: Epic Play Universal Sprite_28
+  - first:
+      213: -3420388821021786468
+    second: Epic Play Universal Sprite_29
+  - first:
+      213: 7499764179267644008
+    second: Epic Play Universal Sprite_30
+  - first:
+      213: 35871603788986232
+    second: Epic Play Universal Sprite_31
+  - first:
+      213: -965585341130512164
+    second: Epic Play Universal Sprite_32
+  - first:
+      213: 7493117336103537321
+    second: Epic Play Universal Sprite_33
+  - first:
+      213: 7111988394873609760
+    second: Epic Play Universal Sprite_34
+  - first:
+      213: -7401346774809910515
+    second: Epic Play Universal Sprite_35
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1358
+        width: 661
+        height: 612
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f7ec3e6684932c0800000000000000
+      internalID: -4451447149933199522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1756
+        width: 580
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704c790fa6ebbd690800000000000000
+      internalID: -7576252581608438777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 1902
+        width: 88
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce725cbff3dc72080800000000000000
+      internalID: -9212168838072424468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 1732
+        y: 1902
+        width: 75
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d61c0f541fc9e110800000000000000
+      internalID: 1290790454619281108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 1874
+        width: 102
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2886d6c815e746290800000000000000
+      internalID: -7898048957787576190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 1750
+        width: 92
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2948ba535b081db90800000000000000
+      internalID: -7218847211920325486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 1762
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 185056ed4d3dc1110800000000000000
+      internalID: 1233093309210363265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1763
+        width: 37
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61765cedc3f676340800000000000000
+      internalID: 4856973030368569110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 1935
+        y: 1759
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 745b89c9d9ea06670800000000000000
+      internalID: 8530009686200071495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 1365
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35524049618902320800000000000000
+      internalID: 2531190213322220883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_14
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 1365
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6732ac6fc10a3ff40800000000000000
+      internalID: 5761124394596967286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_15
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 1634
+        width: 166
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 20, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41cff51096383d630800000000000000
+      internalID: 3950645785151929364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_16
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 1628
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a26bdc42ae11520800000000000000
+      internalID: 2671173497798404748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_17
+      rect:
+        serializedVersion: 2
+        x: 1915
+        y: 1635
+        width: 57
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6c037723222f180800000000000000
+      internalID: -9083159898309474599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_18
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 1429
+        width: 145
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22617c1c2803a4310800000000000000
+      internalID: 1389976773152151074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_19
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 1538
+        width: 43
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db91ba2e4c27fc850800000000000000
+      internalID: 6399459785458784701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_20
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 1521
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c2a8cfcdaa56550800000000000000
+      internalID: 6153512331978091669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_21
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 1394
+        width: 101
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe0a77155088fe70800000000000000
+      internalID: 9149203745957613245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_23
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1394
+        width: 98
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed9916005b6c8580800000000000000
+      internalID: -8823559578481746454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_24
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 1005
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 30, z: 30, w: 30}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502c5497b6d0b8c80800000000000000
+      internalID: -8319541131389582843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_25
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 1252
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ca9a6546849d1c0800000000000000
+      internalID: -4478468758655357889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_26
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 1252
+        width: 42
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a120e9626ff546730800000000000000
+      internalID: 3991420680571585050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_28
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 928
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149df71af344c6ac0800000000000000
+      internalID: -3860635740480218815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_29
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 1080
+        width: 414
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 60, y: 60, z: 60, w: 60}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e77414d765880d0800000000000000
+      internalID: -3420388821021786468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_30
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 1085
+        width: 109
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a627c19c3841860800000000000000
+      internalID: 7499764179267644008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_31
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 1102
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877bd5998017f7000800000000000000
+      internalID: 35871603788986232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_32
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 538
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 20, z: 20, w: 20}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd867958f3d8992f0800000000000000
+      internalID: -965585341130512164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_33
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 538
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 40, z: 40, w: 40}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aac5c65486ecf760800000000000000
+      internalID: 7493117336103537321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_34
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 425
+        width: 530
+        height: 526
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e5423a3cbd2b260800000000000000
+      internalID: 7111988394873609760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Epic Play Universal Sprite_35
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 538
+        width: 300
+        height: 299
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d03e8f38252294990800000000000000
+      internalID: -7401346774809910515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Epic Play Universal Sprite_0: -4451447149933199522
+      Epic Play Universal Sprite_1: -7576252581608438777
+      Epic Play Universal Sprite_10: 1233093309210363265
+      Epic Play Universal Sprite_11: 4856973030368569110
+      Epic Play Universal Sprite_12: 8530009686200071495
+      Epic Play Universal Sprite_13: 2531190213322220883
+      Epic Play Universal Sprite_14: 5761124394596967286
+      Epic Play Universal Sprite_15: 3950645785151929364
+      Epic Play Universal Sprite_16: 2671173497798404748
+      Epic Play Universal Sprite_17: -9083159898309474599
+      Epic Play Universal Sprite_18: 1389976773152151074
+      Epic Play Universal Sprite_19: 6399459785458784701
+      Epic Play Universal Sprite_2: -9212168838072424468
+      Epic Play Universal Sprite_20: 6153512331978091669
+      Epic Play Universal Sprite_21: 9149203745957613245
+      Epic Play Universal Sprite_23: -8823559578481746454
+      Epic Play Universal Sprite_24: -8319541131389582843
+      Epic Play Universal Sprite_25: -4478468758655357889
+      Epic Play Universal Sprite_26: 3991420680571585050
+      Epic Play Universal Sprite_28: -3860635740480218815
+      Epic Play Universal Sprite_29: -3420388821021786468
+      Epic Play Universal Sprite_30: 7499764179267644008
+      Epic Play Universal Sprite_31: 35871603788986232
+      Epic Play Universal Sprite_32: -965585341130512164
+      Epic Play Universal Sprite_33: 7493117336103537321
+      Epic Play Universal Sprite_34: 7111988394873609760
+      Epic Play Universal Sprite_35: -7401346774809910515
+      Epic Play Universal Sprite_5: 1290790454619281108
+      Epic Play Universal Sprite_7: -7898048957787576190
+      Epic Play Universal Sprite_8: -7218847211920325486
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

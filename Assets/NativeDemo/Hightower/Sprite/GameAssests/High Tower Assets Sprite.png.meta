@@ -1,0 +1,687 @@
+fileFormatVersion: 2
+guid: 09015a214212f26469a3539191030d0f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5667656549352841730
+    second: High Tower Assets Sprite_0
+  - first:
+      213: -5226438021431536098
+    second: High Tower Assets Sprite_1
+  - first:
+      213: -343693227247930175
+    second: High Tower Assets Sprite_2
+  - first:
+      213: -6346841977688806409
+    second: High Tower Assets Sprite_3
+  - first:
+      213: 8590064154207542642
+    second: High Tower Assets Sprite_4
+  - first:
+      213: -5229732021151373627
+    second: High Tower Assets Sprite_5
+  - first:
+      213: -4683841050596325026
+    second: High Tower Assets Sprite_6
+  - first:
+      213: 7712407932293088355
+    second: High Tower Assets Sprite_7
+  - first:
+      213: -6380441670137506925
+    second: High Tower Assets Sprite_8
+  - first:
+      213: 5251949175926222021
+    second: High Tower Assets Sprite_9
+  - first:
+      213: 6283800171481810263
+    second: High Tower Assets Sprite_10
+  - first:
+      213: -342020700557159266
+    second: High Tower Assets Sprite_11
+  - first:
+      213: -2032454558493019843
+    second: High Tower Assets Sprite_12
+  - first:
+      213: -2965461016786723722
+    second: High Tower Assets Sprite_13
+  - first:
+      213: 7938460731823505472
+    second: High Tower Assets Sprite_14
+  - first:
+      213: 6141388883584664062
+    second: High Tower Assets Sprite_15
+  - first:
+      213: -3377330581947870518
+    second: High Tower Assets Sprite_16
+  - first:
+      213: 5559056586917853349
+    second: High Tower Assets Sprite_17
+  - first:
+      213: 1864467971784778340
+    second: High Tower Assets Sprite_18
+  - first:
+      213: -1361032558688819082
+    second: High Tower Assets Sprite_19
+  - first:
+      213: -8279758703559255928
+    second: High Tower Assets Sprite_20
+  - first:
+      213: 8808210718722035932
+    second: High Tower Assets Sprite_21
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 750
+        width: 240
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd58ea95607851b0800000000000000
+      internalID: -5667656549352841730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 918
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e165af37f46f777b0800000000000000
+      internalID: -5226438021431536098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 918
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4fd2ea4d4fa3bf0800000000000000
+      internalID: -343693227247930175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_3
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 918
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb225a29dc7be7a0800000000000000
+      internalID: -6346841977688806409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 918
+        width: 42
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d5b5d06d9063770800000000000000
+      internalID: 8590064154207542642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 918
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c669c06f624c67b0800000000000000
+      internalID: -5229732021151373627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 918
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5940da6167affeb0800000000000000
+      internalID: -4683841050596325026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 852
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3640c3ff62af70b60800000000000000
+      internalID: 7712407932293088355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 815
+        width: 51
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2047916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3939a552b1e1477a0800000000000000
+      internalID: -6380441670137506925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_9
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 815
+        width: 51
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.20479159}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccec7113fba2e840800000000000000
+      internalID: 5251949175926222021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 815
+        width: 51
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.20479159}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75546b486fa843750800000000000000
+      internalID: 6283800171481810263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 787
+        width: 102
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94d5752cf5e04bf0800000000000000
+      internalID: -342020700557159266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 710
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3176e2f8554bc3e0800000000000000
+      internalID: -2032454558493019843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 710
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c982bbae098d6d0800000000000000
+      internalID: -2965461016786723722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_14
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 721
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0404abfc9f31b2e60800000000000000
+      internalID: 7938460731823505472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_15
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 710
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1c891b6a89a3550800000000000000
+      internalID: 6141388883584664062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_16
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 721
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac21fe5cabf4121d0800000000000000
+      internalID: -3377330581947870518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_17
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 721
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8b88d338cb52d40800000000000000
+      internalID: 5559056586917853349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_18
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 710
+        width: 94
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4622351fdbbefd910800000000000000
+      internalID: 1864467971784778340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_19
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 454
+        width: 156
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 678ac935914ac1de0800000000000000
+      internalID: -1361032558688819082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_21
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 488
+        width: 263
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd017341bfc0d3a70800000000000000
+      internalID: 8808210718722035932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      High Tower Assets Sprite_0: -5667656549352841730
+      High Tower Assets Sprite_1: -5226438021431536098
+      High Tower Assets Sprite_10: 6283800171481810263
+      High Tower Assets Sprite_11: -342020700557159266
+      High Tower Assets Sprite_12: -2032454558493019843
+      High Tower Assets Sprite_13: -2965461016786723722
+      High Tower Assets Sprite_14: 7938460731823505472
+      High Tower Assets Sprite_15: 6141388883584664062
+      High Tower Assets Sprite_16: -3377330581947870518
+      High Tower Assets Sprite_17: 5559056586917853349
+      High Tower Assets Sprite_18: 1864467971784778340
+      High Tower Assets Sprite_19: -1361032558688819082
+      High Tower Assets Sprite_2: -343693227247930175
+      High Tower Assets Sprite_21: 8808210718722035932
+      High Tower Assets Sprite_3: -6346841977688806409
+      High Tower Assets Sprite_4: 8590064154207542642
+      High Tower Assets Sprite_5: -5229732021151373627
+      High Tower Assets Sprite_6: -4683841050596325026
+      High Tower Assets Sprite_7: 7712407932293088355
+      High Tower Assets Sprite_8: -6380441670137506925
+      High Tower Assets Sprite_9: 5251949175926222021
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
