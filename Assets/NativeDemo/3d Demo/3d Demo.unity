@@ -19196,7 +19196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 840042134, guid: f4b6e6919b611f14e882ab07ac3cde4d, type: 3}
+  m_Sprite: {fileID: 3298458128340399412, guid: f4b6e6919b611f14e882ab07ac3cde4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25284,7 +25284,7 @@ PrefabInstance:
     - target: {fileID: 7689432686328175451, guid: a094664aa6f5c224f85175e5451c7bdb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1010212190, guid: f4b6e6919b611f14e882ab07ac3cde4d, type: 3}
+      objectReference: {fileID: 8696153209997901345, guid: f4b6e6919b611f14e882ab07ac3cde4d, type: 3}
     - target: {fileID: 7689432686328175451, guid: a094664aa6f5c224f85175e5451c7bdb, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 3
@@ -31953,6 +31953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OverrideTestMode: 0
   IsUsingTestAds: 0
+  AdLoaded: 0
   adId: ca-app-pub-3940256099942544/2247696110
   adTag: 
   placeholder: {fileID: 1171115441}

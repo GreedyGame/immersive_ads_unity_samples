@@ -1,7 +1,40 @@
 fileFormatVersion: 2
 guid: f4b6e6919b611f14e882ab07ac3cde4d
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1683120891505973184
+    second: NativeSpriteSheet_0
+  - first:
+      213: -546021288519029969
+    second: NativeSpriteSheet_1
+  - first:
+      213: 8575422670282045601
+    second: NativeSpriteSheet_6
+  - first:
+      213: 8696153209997901345
+    second: NativeSpriteSheet_11
+  - first:
+      213: 3038393909939501547
+    second: NativeSpriteSheet_12
+  - first:
+      213: 3298458128340399412
+    second: NativeSpriteSheet_13
+  - first:
+      213: -3544927289922459457
+    second: NativeSpriteSheet_14
+  - first:
+      213: 4184184205622406951
+    second: NativeSpriteSheet_15
+  - first:
+      213: 1637865530626972805
+    second: NativeSpriteSheet_16
+  - first:
+      213: -7318495721881960540
+    second: NativeSpriteSheet_17
+  - first:
+      213: 8918107274540527217
+    second: NativeSpriteSheet_18
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -44,12 +77,12 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -63,11 +96,11 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -79,48 +112,36 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
+    buildTarget: Server
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -129,7 +150,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: adTag
+      name: NativeSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 18
@@ -137,20 +158,20 @@ TextureImporter:
         width: 100
         height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89bc27027ec26004e93c0f939c265a72
-      internalID: 1409148192
+      spriteID: 0c790448885ab5710800000000000000
+      internalID: 1683120891505973184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starFill
+      name: NativeSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 132
@@ -158,20 +179,20 @@ TextureImporter:
         width: 385
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f683188afe24cd4ca51b7ba351ce60f
-      internalID: -1220627969
+      spriteID: f2ba502f7842c68f0800000000000000
+      internalID: -546021288519029969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: starStroke
+      name: NativeSpriteSheet_6
       rect:
         serializedVersion: 2
         x: 527
@@ -179,182 +200,182 @@ TextureImporter:
         width: 385
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8960a47f135d8d48af8f01b252dbfa4
-      internalID: 1904791243
+      spriteID: 1a83efceb75020770800000000000000
+      internalID: 8575422670282045601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: roundedRect
+      name: NativeSpriteSheet_11
       rect:
         serializedVersion: 2
         x: 8
-        y: 750
-        width: 184
-        height: 186
+        y: 752
+        width: 180
+        height: 180
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 40, y: 40, z: 40, w: 40}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14de9627369bb4b43a35f23a3dda19bc
-      internalID: -1010212190
+      spriteID: 12e3c423541fea870800000000000000
+      internalID: 8696153209997901345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: circleRect
+      name: NativeSpriteSheet_12
       rect:
         serializedVersion: 2
-        x: 198
-        y: 840
-        width: 183
-        height: 92
+        x: 201
+        y: 842
+        width: 180
+        height: 90
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 40, y: 45, z: 40, w: 45}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a8977405b00fc488a5f217734d2119
-      internalID: 1567549523
+      spriteID: be977a9b92b8a2a20800000000000000
+      internalID: 3038393909939501547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: circle
+      name: NativeSpriteSheet_13
       rect:
         serializedVersion: 2
         x: 394
-        y: 750
-        width: 182
-        height: 182
+        y: 752
+        width: 180
+        height: 180
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11678833dbf17f3428098ffcceacca28
-      internalID: 840042134
+      spriteID: 435ba36113a76cd20800000000000000
+      internalID: 3298458128340399412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Native_14
+      name: NativeSpriteSheet_14
       rect:
         serializedVersion: 2
-        x: 586
-        y: 750
-        width: 182
-        height: 182
+        x: 587
+        y: 752
+        width: 180
+        height: 180
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 40, y: 40, z: 40, w: 40}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d1680b2524c07741ab38e5de5a49f8d
-      internalID: 953544209
+      spriteID: fb865916963edcec0800000000000000
+      internalID: -3544927289922459457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: circleStroke
+      name: NativeSpriteSheet_15
       rect:
         serializedVersion: 2
         x: 780
-        y: 750
+        y: 752
         width: 180
-        height: 183
+        height: 180
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 361f210e8ec0af94484807224ced74be
-      internalID: 774941247
+      spriteID: 72f6ce2cd55311a30800000000000000
+      internalID: 4184184205622406951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: circleRectStroke
+      name: NativeSpriteSheet_16
       rect:
         serializedVersion: 2
-        x: 198
-        y: 738
-        width: 183
-        height: 92
+        x: 201
+        y: 740
+        width: 180
+        height: 90
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 40, y: 45, z: 40, w: 45}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51f61e4c32b372740a7482a431c29ac4
-      internalID: -126690639
+      spriteID: 58c90e6b50edab610800000000000000
+      internalID: 1637865530626972805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NativeSpriteSheet_0
+      name: NativeSpriteSheet_17
       rect:
         serializedVersion: 2
-        x: 7
-        y: 553
-        width: 186
-        height: 184
+        x: 10
+        y: 555
+        width: 180
+        height: 180
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16694e6670eaf4742b3d84341bf783ce
-      internalID: 314989601
+      spriteID: 4af720f7aea7f6a90800000000000000
+      internalID: -7318495721881960540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PubscaleLogo
+      name: NativeSpriteSheet_18
       rect:
         serializedVersion: 2
-        x: 211
-        y: 610
-        width: 258
-        height: 119
+        x: 214
+        y: 611
+        width: 252
+        height: 117
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 210f69359a318394cac04f8915bae666
-      internalID: 375586846
+      spriteID: 17ea0d7e05b73cb70800000000000000
+      internalID: 8918107274540527217
       vertices: []
       indices: 
       edges: []
@@ -370,25 +391,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NativeSpriteSheet_0: 314989601
-      Native_14: 953544209
-      PubscaleLogo: 375586846
-      SpriteSheet_10: -1735892464
-      SpriteSheet_2: 2133521157
-      SpriteSheet_3: 458882827
-      SpriteSheet_4: 1271523263
-      SpriteSheet_5: -369346206
-      SpriteSheet_7: -36479259
-      SpriteSheet_8: 1065978184
-      SpriteSheet_9: -341534720
-      adTag: 1409148192
-      circle: 840042134
-      circleRect: 1567549523
-      circleRectStroke: -126690639
-      circleStroke: 774941247
-      roundedRect: -1010212190
-      starFill: -1220627969
-      starStroke: 1904791243
+      NativeSpriteSheet_0: 1683120891505973184
+      NativeSpriteSheet_1: -546021288519029969
+      NativeSpriteSheet_11: 8696153209997901345
+      NativeSpriteSheet_12: 3038393909939501547
+      NativeSpriteSheet_13: 3298458128340399412
+      NativeSpriteSheet_14: -3544927289922459457
+      NativeSpriteSheet_15: 4184184205622406951
+      NativeSpriteSheet_16: 1637865530626972805
+      NativeSpriteSheet_17: -7318495721881960540
+      NativeSpriteSheet_18: 8918107274540527217
+      NativeSpriteSheet_6: 8575422670282045601
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
