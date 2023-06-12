@@ -649,6 +649,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
+      propertyPath: adTag
+      value: balloon
+      objectReference: {fileID: 0}
     - target: {fileID: 981775398565660107, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_Name
       value: NativeAd_WorldSpace (1)
@@ -3378,6 +3382,10 @@ PrefabInstance:
     - target: {fileID: 981775398565660105, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
+      propertyPath: adTag
+      value: billboard
       objectReference: {fileID: 0}
     - target: {fileID: 981775398565660107, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_Name
@@ -20486,18 +20494,16 @@ MonoBehaviour:
   m_Script: {fileID: -1370092147, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideTestMode: 0
-  IsUsingTestAds: 0
-  AdLoaded: 0
   adId: ca-app-pub-3940256099942544/2247696110
-  adTag: 
+  adTag: plane
   placeholder: {fileID: 1113409294}
   adDisplay: {fileID: 1172074045}
   canvas: {fileID: 553753549}
-  IsWorldSpace: 1
   AutoFetch: 1
   TriggerOnCollisionWithTag: Player
-  refereshDelay: -1
+  UsePreCachedAds: 0
+  RefreshDelay: -1
+  AdLoaded: 0
 --- !u!82 &1531543561
 AudioSource:
   m_ObjectHideFlags: 0

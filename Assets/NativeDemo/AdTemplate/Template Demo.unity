@@ -16401,6 +16401,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
+      propertyPath: adTag
+      value: billboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: AutoFetch
       value: 1
       objectReference: {fileID: 0}
@@ -16797,6 +16801,10 @@ PrefabInstance:
     - target: {fileID: 7219863955082515251, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
+      propertyPath: adTag
+      value: billboard
       objectReference: {fileID: 0}
     - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: canvas
@@ -17879,6 +17887,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
+      propertyPath: adTag
+      value: billboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1481752090}
@@ -18758,6 +18770,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
+      propertyPath: adTag
+      value: billboard
+      objectReference: {fileID: 0}
     - target: {fileID: 981775398565660107, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_Name
       value: NativeAd_WorldSpaceUI
@@ -19328,6 +19344,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
+      propertyPath: adTag
+      value: billboard
+      objectReference: {fileID: 0}
     - target: {fileID: 981775398565660107, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_Name
       value: NativeAd_WorldSpaceUI
@@ -19570,6 +19590,10 @@ PrefabInstance:
     - target: {fileID: 7219863955082515251, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
+      propertyPath: adTag
+      value: billboard
       objectReference: {fileID: 0}
     - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: canvas
@@ -94932,6 +94956,10 @@ PrefabInstance:
     - target: {fileID: 981775398565660105, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 981775398565660106, guid: 1def9457b544c334c8624d8043daf957, type: 3}
+      propertyPath: adTag
+      value: billboard
       objectReference: {fileID: 0}
     - target: {fileID: 981775398565660107, guid: 1def9457b544c334c8624d8043daf957, type: 3}
       propertyPath: m_Name

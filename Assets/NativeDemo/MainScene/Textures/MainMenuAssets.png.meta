@@ -113,6 +113,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -162,12 +174,12 @@ TextureImporter:
       name: MainMenuAssets_2
       rect:
         serializedVersion: 2
-        x: 1539
-        y: 1337
-        width: 447
-        height: 627
+        x: 1642
+        y: 1749
+        width: 305
+        height: 266
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +195,12 @@ TextureImporter:
       name: MainMenuAssets_3
       rect:
         serializedVersion: 2
-        x: 1074
-        y: 1302
-        width: 420
-        height: 564
+        x: 1146
+        y: 1462
+        width: 274
+        height: 232
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,7 +221,7 @@ TextureImporter:
         width: 900
         height: 1731
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,7 +242,7 @@ TextureImporter:
         width: 424
         height: 898
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -251,7 +263,7 @@ TextureImporter:
         width: 366
         height: 629
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -272,7 +284,7 @@ TextureImporter:
         width: 390
         height: 325
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -293,7 +305,7 @@ TextureImporter:
         width: 352
         height: 477
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -301,6 +313,27 @@ TextureImporter:
       bones: []
       spriteID: 85eadba2f6441904591cdba0fe88f16e
       internalID: -626455351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainMenuAssets_7
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 1323
+        width: 287
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a591047921a0f4b4fa3a43b7c2fc8489
+      internalID: 607184368
       vertices: []
       indices: 
       edges: []

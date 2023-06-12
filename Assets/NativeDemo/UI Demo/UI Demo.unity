@@ -479,18 +479,16 @@ MonoBehaviour:
   m_Script: {fileID: -1370092147, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideTestMode: 0
-  IsUsingTestAds: 0
-  AdLoaded: 0
   adId: ca-app-pub-3940256099942544/2247696110
   adTag: 
   placeholder: {fileID: 7219863954515177534}
   adDisplay: {fileID: 1046038298383622724}
   canvas: {fileID: 0}
-  IsWorldSpace: 0
   AutoFetch: 1
   TriggerOnCollisionWithTag: Player
-  refereshDelay: -1
+  UsePreCachedAds: 0
+  RefreshDelay: -1
+  AdLoaded: 0
 --- !u!1 &229805863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,6 +1641,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
+      propertyPath: adTag
+      value: bigNative
+      objectReference: {fileID: 0}
     - target: {fileID: 7219863955596050380, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1869,18 +1871,16 @@ MonoBehaviour:
   m_Script: {fileID: -1370092147, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverrideTestMode: 0
-  IsUsingTestAds: 0
-  AdLoaded: 0
   adId: ca-app-pub-3940256099942544/2247696110
   adTag: 
   placeholder: {fileID: 1545559532}
   adDisplay: {fileID: 1160806295}
   canvas: {fileID: 0}
-  IsWorldSpace: 0
   AutoFetch: 1
   TriggerOnCollisionWithTag: Player
-  refereshDelay: -1
+  UsePreCachedAds: 0
+  RefreshDelay: -1
+  AdLoaded: 0
 --- !u!1 &547730243
 GameObject:
   m_ObjectHideFlags: 0
@@ -10777,6 +10777,10 @@ PrefabInstance:
     - target: {fileID: 7219863955596050378, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7219863955596050379, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
+      propertyPath: adTag
+      value: drag
       objectReference: {fileID: 0}
     - target: {fileID: 7219863955596050380, guid: 57202c4ba24b5c640978ddc44a535cf4, type: 3}
       propertyPath: m_Pivot.x
