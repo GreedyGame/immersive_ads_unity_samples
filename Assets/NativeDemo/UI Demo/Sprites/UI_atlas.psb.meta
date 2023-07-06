@@ -21,11 +21,13 @@ ScriptedImporter:
     convertToNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
     isReadable: 0
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     vTOnly: 0
-    ignoreMasterTextureLimit: 0
+    ignoreMipmapLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -88,7 +90,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
@@ -112,7 +113,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 831, y: 102}
     spritePosition: {x: 1175, y: 405}
   - name: Christmas_Deco_01
@@ -134,7 +134,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 209}
     spritePosition: {x: 1057, y: 370}
   - name: Window_bg_04
@@ -156,7 +155,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 403}
     spritePosition: {x: 271, y: 828}
   - name: icon_open_mail
@@ -178,7 +176,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 321}
     spritePosition: {x: 813, y: 1913}
   - name: Special_offer_tag
@@ -200,7 +197,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 592}
     spritePosition: {x: 1070, y: 1266}
   - name: bt_13
@@ -222,7 +218,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 831, y: 4}
     spritePosition: {x: 747, y: 1265}
   - name: bt_12
@@ -244,7 +239,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 698}
     spritePosition: {x: 496, y: 1024}
   - name: bt_11
@@ -266,7 +260,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 800}
     spritePosition: {x: 496, y: 1128}
   - name: bt_10
@@ -288,7 +281,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 902}
     spritePosition: {x: 496, y: 1228}
   - name: bt_09
@@ -310,7 +302,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 4}
     spritePosition: {x: 496, y: 1328}
   - name: Christmas_Deco_03
@@ -332,7 +323,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 238, y: 885}
     spritePosition: {x: 1157, y: 502}
   - name: Christmas_Deco_06
@@ -354,7 +344,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 442}
     spritePosition: {x: 1297, y: 643}
   - name: Christmas_Deco_04
@@ -376,7 +365,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 976}
     spritePosition: {x: 1189, y: 636}
   - name: Christmas_Deco_05
@@ -398,7 +386,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 822}
     spritePosition: {x: 1130, y: 654}
   - name: Char_fx_frame
@@ -420,7 +407,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 4}
     spritePosition: {x: 1308, y: 818}
   - name: Heal_button_bg
@@ -442,7 +428,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 238, y: 679}
     spritePosition: {x: 1090, y: 1044}
   - name: halloween_deco_02
@@ -464,7 +449,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 921, y: 4}
     spritePosition: {x: 1642, y: 175}
   - name: frame_halloween
@@ -486,7 +470,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 238, y: 4}
     spritePosition: {x: 1518, y: 278}
   - name: frame_christmas
@@ -508,7 +491,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 238, y: 229}
     spritePosition: {x: 1268, y: 328}
   - name: frame_01
@@ -530,7 +512,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 238, y: 454}
     spritePosition: {x: 212, y: 1378}
   - name: icon_power
@@ -552,7 +533,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 772, y: 889}
     spritePosition: {x: 805, y: 1732}
   - name: icon_Chat_menu
@@ -574,7 +554,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 831, y: 207}
     spritePosition: {x: 794, y: 1821}
   - name: Window_bg_03
@@ -596,7 +575,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 4, y: 356}
     spritePosition: {x: 271, y: 1018}
   - name: Window_bg_02
@@ -618,7 +596,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 36, y: 1018}
   - name: XP_Hud_juice
@@ -640,7 +617,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 4, y: 606}
     spritePosition: {x: 538, y: 1658}
   - name: XP_Hud_bg
@@ -662,7 +638,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 464, y: 209}
     spritePosition: {x: 555, y: 1675}
   - name: Main_menu_icon_05
@@ -684,7 +659,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 889}
     spritePosition: {x: 685, y: 1909}
   - name: Main_menu_icon_04
@@ -706,7 +680,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 527}
     spritePosition: {x: 538, y: 1902}
   - name: Main_menu_icon_03
@@ -728,7 +701,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 627}
     spritePosition: {x: 397, y: 1905}
   - name: Main_menu_icon_02
@@ -750,7 +722,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 106}
     spritePosition: {x: 238, y: 1901}
   - name: Main_menu_icon_01
@@ -772,7 +743,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 667, y: 721}
     spritePosition: {x: 114, y: 1902}
   - name: Main_menu_button_01
@@ -794,7 +764,6 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    parentGroupIndex: -1
     uvTransform: {x: 4, y: 835}
     spritePosition: {x: 36, y: 1697}
   characterData:
@@ -802,6 +771,7 @@ ScriptedImporter:
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
+    pivot: {x: 0, y: 0}
     boneReadOnly: 0
   sharedRigSpriteImportData: []
   sharedRigCharacterData:
@@ -809,6 +779,7 @@ ScriptedImporter:
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
+    pivot: {x: 0, y: 0}
     boneReadOnly: 0
   platformSettings: []
   mosaicLayers: 1
@@ -821,6 +792,8 @@ ScriptedImporter:
   paperDollMode: 0
   keepDupilcateSpriteName: 1
   skeletonAssetReferenceID: 
+  padding: 4
+  spriteSizeExpand: 0
   spriteCategoryList:
     categories: []
   spritePackingTag: 
@@ -1159,6 +1132,9 @@ ScriptedImporter:
     isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
   prefabAssetName: 
