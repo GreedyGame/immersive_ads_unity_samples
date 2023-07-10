@@ -1,51 +1,45 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DragOrthographicCamera : MonoBehaviour
 {
-    [SerializeField]
-    private float dragSpeed = 2f;
-    [SerializeField] private Transform endPoint;
-    [SerializeField] private Transform startPoint;
-    private bool dragPanMoveActive;
-    private Vector2 lastMousePosition;
-
-    private Vector3 InitPos;
+    Vector3 hit_position = Vector3.zero;
+    Vector3 current_position = Vector3.zero;
+    Vector3 camera_position = Vector3.zero;
+    private Camera cam;
+    private Vector3 targetPosition;
+    public float minX;
+    public float maxX;
+    private Vector3 direction;
 
     private void Awake()
     {
-        InitPos = transform.position;
+        cam=Camera.main;
     }
-    void LateUpdate()
+    void Update()
     {
-        HandleCameraMovementDragPan();
-    }
-    private void HandleCameraMovementDragPan()
-    {
-        Vector3 inputDir = new Vector3(0, 0, 0);
-
         if (Input.GetMouseButtonDown(0))
         {
-            dragPanMoveActive = true;
-            lastMousePosition = Input.mousePosition;
+            hit_position = Input.mousePosition;
+            camera_position = transform.position;
+
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButton(0))
         {
-            dragPanMoveActive = false;
+            current_position = Input.mousePosition;
+            LeftMouseDrag();
         }
-
-        if (dragPanMoveActive)
-        {
-            Vector2 mouseMovementDelta = (Vector2)Input.mousePosition - lastMousePosition;
-
-            float dragPanSpeed = 1f;
-            inputDir.x = mouseMovementDelta.x * dragPanSpeed;
-            inputDir.z = mouseMovementDelta.y * dragPanSpeed;
-
-            lastMousePosition = Input.mousePosition;
-        }
-
-        Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
-        transform.position += -moveDir * dragSpeed * Time.deltaTime;
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, startPoint.position.x, endPoint.position.x), InitPos.y, InitPos.z);
     }
+    void LeftMouseDrag()
+    {
+        direction = GetWorldPosition(current_position) - GetWorldPosition(hit_position);
+        Vector3 temPos = camera_position - direction;
+        targetPosition = new Vector3(Mathf.Clamp(temPos.x, minX, maxX), transform.position.y, -10);
+        transform.position = targetPosition;
+    }
+    public Vector3 GetWorldPosition(Vector3 pos)
+    {
+        return cam.ScreenToWorldPoint(pos);
+    }
+
 }

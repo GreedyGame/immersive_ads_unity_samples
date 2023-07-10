@@ -9474,7 +9474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -269, y: 562}
+  m_AnchoredPosition: {x: -268.99997, y: 562}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!199 &1014493572
@@ -14928,7 +14928,7 @@ GameObject:
   - component: {fileID: 1179151675}
   - component: {fileID: 1179151676}
   m_Layer: 0
-  m_Name: NativeAdManager
+  m_Name: PubscaleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14959,15 +14959,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179151673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1984506369, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
+  m_Script: {fileID: -88682184, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseTestMode: 1
-  EnablePluginLogsInRelease: 0
-  DontDestroyOnSceneChange: 1
-  PreCachedAdUnitID: ca-app-pub-3940256099942544/2247696110
-  PreCachedAdsCount: 1
-  UseAdaptiveColorDetection: 1
+  FinalPreCachedAdUnit: 
 --- !u!1 &1208937040
 GameObject:
   m_ObjectHideFlags: 0

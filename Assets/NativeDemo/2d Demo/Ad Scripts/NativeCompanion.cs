@@ -1,6 +1,5 @@
 using GoogleMobileAds.Api;
 using UnityEngine;
-
 namespace PubScale.SdkOne.NativeAds.Sample
 {
     /// <summary>

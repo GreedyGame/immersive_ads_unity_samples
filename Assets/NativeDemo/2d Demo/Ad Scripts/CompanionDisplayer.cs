@@ -11,10 +11,14 @@ namespace PubScale.SdkOne.NativeAds.Sample
     public class CompanionDisplayer : NativeAdDisplayHandler
     {
         public static event Action<NativeAd> FillCompanion;
+
         public override void FillAndRegister(NativeAd nativeAd, bool registerElement = true)
         {
             Debug.Log("Fill the Companion");
+
             base.FillAndRegister(nativeAd, false);
+            adHeadlineTxt.gameObject.SetActive(false);
+            adCallToActionTxt.gameObject.SetActive(false);
             FillCompanion?.Invoke(nativeAd);
         }
     }
