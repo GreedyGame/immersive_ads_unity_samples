@@ -33,12 +33,12 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         }
         public void InitCam(Transform target)
         {
-            leftWall.size = new Vector2(1f, cam.ScreenToWorldPoint(new Vector3(0f, Screen.height * 2f, 0)).y);
+            leftWall.size = new Vector2(1f, cam.ScreenToWorldPoint(new Vector3(0f, Screen.height * 4f, 0)).y);
             leftWall.offset = new Vector2(cam.ScreenToWorldPoint(Vector3.zero).x - (0.5f + transform.position.x), 0f);
-            rightWall.size = new Vector2(1f, cam.ScreenToWorldPoint(new Vector3(0f, Screen.height * 2f, 0)).y);
+            rightWall.size = new Vector2(1f, cam.ScreenToWorldPoint(new Vector3(0f, Screen.height * 4f, 0)).y);
             rightWall.offset = new Vector2(cam.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x + (0.5f - transform.position.x), 0f);
-            bottomWall.size = new Vector2(cam.ScreenToWorldPoint(new Vector3(0f, Screen.height * 2.5f, 0)).y, 1);
-            bottomWall.offset = new Vector2(0f, cam.ScreenToWorldPoint(new Vector3(0f, 0, 0)).y - 1.5f);
+            bottomWall.size = new Vector2(cam.ScreenToWorldPoint(new Vector3(0f, Screen.height * 4.5f, 0)).y, 2);
+            bottomWall.offset = new Vector2(0f, cam.ScreenToWorldPoint(new Vector3(0f, 0, 0)).y - 1f);
             followX = false;
             this.target = target;
             //transform.position = new Vector3(target.position.x, target.position.y + 2, -10);
@@ -57,6 +57,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                 canFollow = false;
                 leftWall.enabled = false;
                 rightWall.enabled = false;
+                centre= new Vector3(centre.x-1.5f, centre.y, transform.position.z);
                 transform.DOMoveX(centre.x, 1).OnComplete(() =>
                 {
                     leftWall.enabled = true;

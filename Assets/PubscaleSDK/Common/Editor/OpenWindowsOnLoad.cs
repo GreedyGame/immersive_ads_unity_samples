@@ -1,7 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEditor.Compilation;
 
 namespace PubScale.SdkOne
 {
@@ -12,20 +10,19 @@ namespace PubScale.SdkOne
         {
             PubScaleSettings settings = AssetDatabase.LoadAssetAtPath<PubScaleSettings>(PubEditorUX.PackageSettingsPath);
 
-
             if (settings == null)
             {
-                if (!AssetDatabase.IsValidFolder(PubEditorUX.PackageSettingsFolderPath))
-                {
-                    AssetDatabase.CreateFolder("Assets", PubEditorUX.PackageSettingsFolder);
-                }
+                PubEditorUX.CheckResourcesFolderInCommon();
+
                 settings = ScriptableObject.CreateInstance<PubScaleSettings>();
                 AssetDatabase.CreateAsset(settings, PubEditorUX.PackageSettingsPath);
             }
+
             if (settings.IsFirstTimeUsingTheAsset)
             {
                 EditorApplication.delayCall += PubScaleWindow.OpenWindow;
             }
+
         }
     }
 }

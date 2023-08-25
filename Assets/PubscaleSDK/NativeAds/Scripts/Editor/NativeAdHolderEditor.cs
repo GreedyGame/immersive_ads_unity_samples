@@ -8,28 +8,30 @@ namespace PubScale.SdkOne.NativeAds
     public class NativeAdHolderEditor : Editor
     {
 
-        NativeAdHolder targetHolder;
+        protected NativeAdHolder targetHolder;
         protected GUIStyle styleValid;
         protected GUIStyle styleInvalid;
 
         // SerializedProperty Prop_AdID;
-        SerializedProperty Prop_AdTag;
-        SerializedProperty Prop_Placeholder;
-        SerializedProperty Prop_AdDisplayHandler;
+        protected SerializedProperty Prop_AdTag;
+        protected SerializedProperty Prop_Placeholder;
+        protected SerializedProperty Prop_AdDisplayHandler;
 
-        SerializedProperty Prop_MoreDisplayLandscape;
-        SerializedProperty Prop_MoreDisplayPotrait;
-        SerializedProperty Prop_MoreDisplayNoBigMedia;
+        protected SerializedProperty Prop_UseExtraFormats;
+        protected SerializedProperty Prop_MoreDisplayLandscape;
+        protected SerializedProperty Prop_MoreDisplayPotrait;
+        protected SerializedProperty Prop_MoreDisplayNoBigMedia;
 
-        SerializedProperty Prop_canvas;
-        SerializedProperty Prop_AutoFetch;
-        SerializedProperty Prop_TriggerFetch;
-        SerializedProperty Prop_TriggerTag;
-        SerializedProperty Prop_UsePreCachedAds;
-        SerializedProperty Prop_RefreshDelay;
-        PubEditorUXState prevEditorGUIState = new PubEditorUXState();
+        protected SerializedProperty Prop_canvas;
+        protected SerializedProperty Prop_AutoFetch;
+        protected SerializedProperty Prop_TriggerFetch;
+        protected SerializedProperty Prop_TriggerTag;
+        protected SerializedProperty Prop_UsePriorityCache;
+        protected SerializedProperty Prop_RefreshDelay;
+        protected SerializedProperty Prop_Retries;
 
-        bool foldableExtraFormats = false;
+        protected PubEditorUXState prevEditorGUIState = new PubEditorUXState();
+
         public void OnEnable()
         {
             targetHolder = (NativeAdHolder)target;
@@ -40,7 +42,6 @@ namespace PubScale.SdkOne.NativeAds
             styleInvalid = new GUIStyle();
             styleInvalid.normal.textColor = new Color(0.6f, 0f, 0f, 1f);
 
-            //  Prop_AdID = serializedObject.FindProperty(nameof(targetHolder.adId));
             Prop_AdTag = serializedObject.FindProperty(nameof(targetHolder.adTag));
             Prop_Placeholder = serializedObject.FindProperty(nameof(targetHolder.placeholder));
             Prop_AdDisplayHandler = serializedObject.FindProperty(nameof(targetHolder.adDisplay));
@@ -48,9 +49,11 @@ namespace PubScale.SdkOne.NativeAds
             Prop_AutoFetch = serializedObject.FindProperty(nameof(targetHolder.AutoFetch));
             Prop_TriggerFetch = serializedObject.FindProperty(nameof(targetHolder.TriggerFetchWithCollider));
             Prop_TriggerTag = serializedObject.FindProperty(nameof(targetHolder.TriggerOnCollisionWithTag));
-            Prop_UsePreCachedAds = serializedObject.FindProperty(nameof(targetHolder.UsePreCachedAds));
+            Prop_UsePriorityCache = serializedObject.FindProperty(nameof(targetHolder.UsePriorityCache));
             Prop_RefreshDelay = serializedObject.FindProperty(nameof(targetHolder.RefreshDelay));
+            Prop_Retries = serializedObject.FindProperty(nameof(targetHolder.Retries));
 
+            Prop_UseExtraFormats = serializedObject.FindProperty(nameof(targetHolder.UseExtraFormats));
             Prop_MoreDisplayLandscape = serializedObject.FindProperty(nameof(targetHolder.landscapeAdFormats));
             Prop_MoreDisplayPotrait = serializedObject.FindProperty(nameof(targetHolder.potraitAdFormats));
             Prop_MoreDisplayNoBigMedia = serializedObject.FindProperty(nameof(targetHolder.nonMediaType));
@@ -71,11 +74,17 @@ namespace PubScale.SdkOne.NativeAds
                 PubEditorUX.DisplayHeading("AD PLACEMENT INFO");
 
                 PubEditorUX.DisplayString(Prop_AdTag, new GUIContent("Ad Placement Tag:"));
-                //  PubEditorUX.DisplayString(Prop_AdID, new GUIContent("Ad Unit ID:"));
+
+                EditorGUILayout.Space();
+                PubEditorUX.DisplayToggle(Prop_UsePriorityCache, new GUIContent("Is On Screen For Short Time:"));
+                PubEditorUX.DisplayTip("Enable this for short time placements~ e.g. Level loading screen");
+                PubEditorUX.DisplayTip("1. Placement is given priority in the caching system.");
+                PubEditorUX.DisplayTip("2. If Cached ad is available, it will be shown instantly.");
+                PubEditorUX.DisplayTip("3. New ad request and retry logic will NOT be used.");
+
             }
 
             EditorGUILayout.Space();
-
 
             using (new EditorGUILayout.VerticalScope(GUI.skin.box))
             {
@@ -97,9 +106,9 @@ namespace PubScale.SdkOne.NativeAds
 
                 PubEditorUX.AddToLabelWidth(40);
 
-                foldableExtraFormats = EditorGUILayout.Toggle("ADD EXTRA DISPLAY FORMATS:", foldableExtraFormats);
+                Prop_UseExtraFormats.boolValue = EditorGUILayout.Toggle("ADD EXTRA DISPLAY FORMATS:", Prop_UseExtraFormats.boolValue);
 
-                if (foldableExtraFormats)
+                if (Prop_UseExtraFormats.boolValue)
                 {
                     EditorGUILayout.Space();
 
@@ -168,10 +177,9 @@ namespace PubScale.SdkOne.NativeAds
             {
                 PubEditorUX.DisplayHeading("AD BEHAVIOUR");
 
-                PubEditorUX.DisplayToggle(Prop_UsePreCachedAds, new GUIContent("Use Pre-Cached Ads From Manager:"));
                 PubEditorUX.DisplayFloat(Prop_RefreshDelay, new GUIContent("Refresh time after Impression: "));
-                PubEditorUX.DisplayTip("Recommended Refresh Delay: 30s or more");
-
+                PubEditorUX.DisplayTip("To Disable Refresh use -1");
+                PubEditorUX.DisplayInt(Prop_Retries, new GUIContent("Retries on Ad Fail: "));
             }
 
             EditorGUILayout.Space();

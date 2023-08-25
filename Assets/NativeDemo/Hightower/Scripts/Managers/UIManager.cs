@@ -5,6 +5,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using PubScale.SdkOne;
+using PubScale.SdkOne.NativeAds.Sample;
 
 namespace PubScale.SdkOne.NativeAds.Hightower
 {
@@ -32,18 +33,28 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         private Coroutine countDownRoutine;
         private bool pauseState = false;
         private bool canMute = false;
+        public Action<bool> ShowHideAd;
         #endregion
 
         #region Intialisation
         private void Awake()
         {
+            NativeAdClickDisabler.ShowHideAd += NativeAdClickDisabler_ShowHideAd;
             bestScoreTxt.text = PlayerPrefs.GetInt("BestScore", 0).ToString();
             gameCanvas.gameObject.SetActive(false);
             AudioListener.volume = PlayerPrefs.GetInt("mute", 0) == 1 ? 0 : 1;
             AudioManager.isMute = PlayerPrefs.GetInt("mute", 0) == 1;
             audioToggle.sprite = AudioListener.volume == 0 ? mute : umute;
             canMute = true;
+            Time.timeScale = 1;
+            continueButton.gameObject.SetActive(false);
         }
+
+        private void NativeAdClickDisabler_ShowHideAd(Action<bool> obj)
+        {
+           ShowHideAd = obj;
+        }
+
         public void InitUI(int score)
         {
             tutorialUI.blocksRaycasts = true;
@@ -51,6 +62,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             tutorialUI.DOFade(1, 1).From(0);
             gameCanvas.gameObject.SetActive(false);
             scoreTxt.text = score.ToString();
+            //AdManager.instance.LoadInterstitialAd();
         }
         #endregion
         #region Events
@@ -81,8 +93,10 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         public void RestartLevel()
         {
             AudioManager.instance.Play("button");
-            Time.timeScale = 1;
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+          //  AdManager.instance.ShowInterstitialAd();
+            Time.timeScale = 1;
+
 #if UNITY_WEBGL && !UNITY_EDITOR
         WebUtils.ShowInterstitialAd();
 #endif
@@ -99,15 +113,22 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                 pauseUI.interactable = false;
                 AudioManager.instance.Paused(true);
                 Time.timeScale = 0;
+                ShowHideAd?.Invoke(true);
                 DGAnimationController.AnimateBgPanel(pauseUI.gameObject, true, Complete: () => { pauseUI.interactable = true; });
             }
             else
             {
+                ShowHideAd?.Invoke(false);
                 if (countDownRoutine == null)
                     countDownRoutine = StartCoroutine(CountDown());
                 AudioManager.instance.Paused(false);
 
             }
+        }
+        public void QuitGame()
+        {
+            Time.timeScale = 1;
+            Fader.LoadScene("MainScene");
         }
         IEnumerator CountDown()
         {
@@ -134,13 +155,15 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         }
         public void ShowLevelComplete(int best, bool newScore)
         {
+            ShowHideAd?.Invoke(true);
             newBest.SetActive(newScore);
             gameOvertotalScoreTxt.text = scoreTxt.text;
-            gameOverbestScoreTxt.text = "Best: " + best.ToString();
+            gameOverbestScoreTxt.text = best.ToString();
             DGAnimationController.AnimateBgPanel(gameOverUI.gameObject, true);
         }
         public void HideLevelComplete()
         {
+            ShowHideAd?.Invoke(false);
             continueButton.SetActive(false);
             DGAnimationController.AnimateBgPanel(gameOverUI.gameObject, false);
         }

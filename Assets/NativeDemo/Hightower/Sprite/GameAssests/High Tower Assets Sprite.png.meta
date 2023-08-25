@@ -86,11 +86,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -129,6 +130,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -141,6 +143,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -153,6 +156,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -165,6 +169,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -177,6 +182,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -189,6 +195,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -201,6 +208,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -630,12 +638,12 @@ TextureImporter:
       name: High Tower Assets Sprite_21
       rect:
         serializedVersion: 2
-        x: 342
-        y: 488
-        width: 263
-        height: 134
+        x: 38
+        y: 26
+        width: 401
+        height: 228
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -643,6 +651,27 @@ TextureImporter:
       bones: []
       spriteID: cd017341bfc0d3a70800000000000000
       internalID: 8808210718722035932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: High Tower Assets Sprite_20
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 278
+        width: 432
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369be63565c811246ae5c3d7a2e6cc11
+      internalID: -20979755
       vertices: []
       indices: 
       edges: []
@@ -671,6 +700,7 @@ TextureImporter:
       High Tower Assets Sprite_18: 1864467971784778340
       High Tower Assets Sprite_19: -1361032558688819082
       High Tower Assets Sprite_2: -343693227247930175
+      High Tower Assets Sprite_20: -1700335644
       High Tower Assets Sprite_21: 8808210718722035932
       High Tower Assets Sprite_3: -6346841977688806409
       High Tower Assets Sprite_4: 8590064154207542642
@@ -679,9 +709,8 @@ TextureImporter:
       High Tower Assets Sprite_7: 7712407932293088355
       High Tower Assets Sprite_8: -6380441670137506925
       High Tower Assets Sprite_9: 5251949175926222021
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

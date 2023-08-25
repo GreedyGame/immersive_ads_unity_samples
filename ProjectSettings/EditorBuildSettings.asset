@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NativeDemo/AdTemplate/Template Demo.unity
     guid: e8f51246b04e4654fa57f001e5edd102
+  - enabled: 1
+    path: Assets/OfferWallDemo/OfferWall/OfferwallAndroid.unity
+    guid: f84e2c9ae0e37064b8d3f4c20a018919
   m_configObjects: {}

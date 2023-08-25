@@ -1,23 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using PubScale.SdkOne.NativeAds;
-using PubScale.SdkOne;
 
-public class LogTest : MonoBehaviour
+namespace PubScale.SdkOne.NativeAds
 {
-    void Start()
+    public class LogTest : MonoBehaviour
     {
-        PubScaleManager.LogHandler += NativeAdManager_LogHandler;
+        void Start()
+        {
+            PubScaleManager.LogHandler += NativeAdManager_LogHandler;
 
-    }
-    private void OnDestroy()
-    {
-        PubScaleManager.LogHandler -= NativeAdManager_LogHandler;
+        }
+        private void OnDestroy()
+        {
+            PubScaleManager.LogHandler -= NativeAdManager_LogHandler;
 
-    }
-    private void NativeAdManager_LogHandler(string eventName,NativeAdHolder holderRef)
-    {
-        Debug.Log(eventName);
+        }
+        private void NativeAdManager_LogHandler(string eventName, PubScaleLogData holderRef)
+        {
+            //add all values to a string and log it
+            string log = "";
+            foreach (var item in holderRef.EventData)
+            {
+                log += item.k + "=" + item.v + "\n";
+            }
+            Debug.Log(eventName + "\n" + log);
+        }
     }
 }

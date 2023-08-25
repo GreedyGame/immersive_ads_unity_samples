@@ -25,18 +25,18 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 		private int NextEndScore = 5;
 		private int previousScore;
 		private int previousMove;
+        private bool canShowBallonAd;
 
-		public static event Action<Transform> ShowAdNow;
+        public static event Action<Transform> ShowAdNow;
 		public static event Action HideAdNow;
-		#endregion
 
-		#region Intialisation
-		private void Awake()
+        public static event Action<bool,Transform> DroneState;
+        #endregion
+
+        #region Intialisation
+        private void Awake()
 		{
 			Application.targetFrameRate = 60;
-#if UNITY_WEBGL && !UNITY_EDITOR
-		WebUtils.LogEvent("GameStart" + Application.productName);
-#endif
 			if (instance == null)
 				instance = this;
 			else if (instance != this)
@@ -54,11 +54,20 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 			NextStartScore = UnityEngine.Random.Range(currentScore + 3, currentScore + 10);
 			NextEndScore = UnityEngine.Random.Range(NextStartScore + 11, NextStartScore + 16);
 		}
-		private void PlayerController_OnFloor(int move = -1)
+		private void PlayerController_OnFloor(FloorHandler floor)
 		{
+			int move=floor.GetXStatus();
 			currentScore = currentScore + 1;
-			int min = currentScore - previousScore;
-			previousScore = currentScore;
+            if (currentScore == 4)
+                canShowBallonAd = true;
+            if (canShowBallonAd && currentScore % 3 == 0)
+            {
+                canShowBallonAd = false;
+                DroneState?.Invoke(true,floor.transform);
+            }
+            int min = currentScore - previousScore;
+			
+            previousScore = currentScore;
 			if (currentScore > 20)
 				levelManager.levelSettings.canHaveObstacle = true;
 			if (currentScore == NextStartScore)
@@ -70,21 +79,24 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 				levelManager.SpawnHorizontal(false);
 				CalculateNextScore();
 			}
+	
 			if (move >= 0 && previousMove != move)
 			{
 				previousMove = move;
 				if (move == 1)
 				{
-					ShowAdNow?.Invoke(player.transform);
+                    DroneState?.Invoke(false,floor.transform);
+                    ShowAdNow?.Invoke(player.transform);
 					cameraFollow.LockCam(true, Vector3.zero);
 				}
 				else
 				{
+					canShowBallonAd = true;
 					HideAdNow?.Invoke();
 					cameraFollow.LockCam(false, levelManager.GetPos());
 				}
 			}
-			ui.UpdateScore(currentScore);
+            ui.UpdateScore(currentScore);
 		}
 
 		private void Start()
@@ -108,6 +120,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 			currentScore = 0;
 			ui.StartLevel();
 			player.InitPlayer();
+		
 			ui.UpdateScore(currentScore);
 		}
 		public void LevelComplete(float delay = 0)
@@ -150,10 +163,8 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 		}
 		public void ContinueGame()
 		{
-#if UNITY_WEBGL && !UNITY_EDITOR
-		WebUtils.LogEvent("ContinueUsed_" + Application.productName);
-#endif
-			ui.HideLevelComplete();
+            ui.ShowHideAd?.Invoke(false);
+            ui.HideLevelComplete();
 			cameraFollow.ResetCam();
 			player.Revive();
 			levelManager.RestartGenerator();
@@ -166,8 +177,16 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 		#endregion
 		public void ShowReward()
 		{
+			ui.ShowHideAd?.Invoke(true);
 			ui.ContinueButton(false);
-			ContinueGame();
+			//AdManager.instance.GiveRewardedAd((and) =>
+			//{
+			//	if (and)
+			//	{
+                  
+			//	}
+			//});
+                    ContinueGame();
 		}
 	}
 }

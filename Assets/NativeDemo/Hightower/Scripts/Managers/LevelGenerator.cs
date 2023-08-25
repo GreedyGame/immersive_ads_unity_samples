@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PubScale.SdkOne.NativeAds.Sample;
+using System;
 using System.Collections;
 using UnityEngine;
 namespace PubScale.SdkOne.NativeAds.Hightower
@@ -26,8 +27,10 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         private int bestFloor;
         private Vector2 returnPos;
         private HorizontalStatus previousStatus = HorizontalStatus.Closed;
+
         public void InitGenerator(Transform player)
         {
+            SecondSpawn = false;
             haveObstacle = false;
             previousStatus = HorizontalStatus.Closed;
             this.player = player;
@@ -64,9 +67,8 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             {
                 if (spawnLeft)
                 {
-                    if (spawnPoint.position.x - player.position.x < 30)
+                    if (spawnPoint.position.x - player.position.x < 20)
                     {
-
                         Check();
                         GameObject floorObject2 = PoolingSystem.instance.Instantiate(floor, spawnPoint.position, Quaternion.identity);
                         spawnPoint.position = new Vector3(spawnPoint.position.x +4.9f, spawnPoint.position.y , spawnPoint.position.z);
@@ -81,11 +83,12 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                         {
                             SecondSpawn = true;
                             firstSpawn = false;
-                            spawnPoint.position = floorHandler.InitFloor(HorizontalStatus.RightOpen, VerticalStatus.Closed, true);
+                           floorHandler.InitFloor(HorizontalStatus.RightOpen, VerticalStatus.Closed, true);
                             floorHandler.EnableArrow();
-                            spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 0.7f, spawnPoint.position.z);
+                            //spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 0.7f, spawnPoint.position.z);
                             floorHandler.SetFollowStatus(1);
                         }
+                      
                     }
                 }
                 else
@@ -112,9 +115,16 @@ namespace PubScale.SdkOne.NativeAds.Hightower
 
                             haveObstacle = false;
                         }
+                        if (SecondSpawn)
+                        {
+                            SecondSpawn = false;
+                            floorHandler.InitFloor(HorizontalStatus.LeftOpen, VerticalStatus.TopOpen, false);
+                            floorHandler.SetFollowStatus(0);
+                        }
                         if (firstSpawn)
                         {
                             firstSpawn = false;
+                            SecondSpawn = true;
                             spawnPos = floorHandler.InitFloor(HorizontalStatus.LeftOpen, VerticalStatus.TopOpen, false);
                             floorHandler.SetFollowStatus(0);
                             returnPos = spawnPos;
@@ -127,6 +137,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         HorizontalStatus GetAndSetStatus()
         {
             HorizontalStatus wallStatus = (HorizontalStatus)UnityEngine.Random.Range(0, 4);
+        
             switch (previousStatus)
             {
                 case HorizontalStatus.LeftOpen:
@@ -143,6 +154,8 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                     break;
             }
             previousStatus = wallStatus;
+            if (numberOfFloors < 20)
+                wallStatus = UnityEngine.Random.Range(0, 3) == 0 ? wallStatus : HorizontalStatus.Closed;
             return wallStatus;
         }
         HorizontalStatus GetStatus(HorizontalStatus[] horizontals)

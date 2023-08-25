@@ -110,6 +110,8 @@ namespace PubScale.SdkOne
 
         static void LoadPubScaleSettings()
         {
+            PubEditorUX.CheckResourcesFolderInCommon();
+
             psSettings = AssetDatabase.LoadAssetAtPath<PubScaleSettings>(PubEditorUX.PackageSettingsPath);
 
             if (psSettings == null)
@@ -130,10 +132,6 @@ namespace PubScale.SdkOne
 
 
             defaultEditorLabelWidth = EditorGUIUtility.labelWidth;
-
-
-
-
 
             if (!initialized)
             {
@@ -165,139 +163,186 @@ namespace PubScale.SdkOne
 
             EditorGUILayout.Space();
 
-            //   EditorGUILayout.LabelField(@"SDK ONE: REVENUE OPTIMIZATION", textStyle);
-
             using (new EditorGUILayout.VerticalScope(GUI.skin.box))
             {
 
-
                 EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH;
-
 
                 GUILayout.BeginArea(new Rect(20, imageHeight + 10, position.width - margin * 2, position.height - imageHeight + 2 * margin));
 
                 DrawTabs();
 
-                EditorGUILayout.Space();
-                EditorGUILayout.Space();
-                EditorGUILayout.Space();
+                // EditorGUILayout.Space();
+                // EditorGUILayout.Space();
+                // EditorGUILayout.Space();
+
+                bool changesDetected = false;
 
                 int selection = (int)_categorySelected;
 
-                if (selection == 0)
+
+                using (new EditorGUILayout.VerticalScope(GUI.skin.button))
                 {
-                    EditorGUILayout.Space();
+                    EditorGUILayout.LabelField("", "v" + PubScaleSDK.PluginVersion, PubEditorUX.PubTitleStyle, GUILayout.ExpandWidth(true));
+
                     EditorGUILayout.Space();
 
-                    EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 40;
-
-                    using (new EditorGUILayout.VerticalScope(GUI.skin.box))
+                    if (selection == 0)
                     {
-                        psSettings.AppId = EditorGUILayout.TextField("PubScale APP ID:", psSettings.AppId);
-                    }
+                        EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 40;
 
-                    EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 40;
-
-
-                    EditorGUILayout.Space();
-
-                }
-                else if (selection == 1)
-                {
-                    EditorGUILayout.Space();
-                    EditorGUILayout.Space();
-
-                    using (new EditorGUILayout.VerticalScope(GUI.skin.box))
-                    {
-
-
-                        PubEditorUX.DisplayHeading("NATIVE ADS");
-
-                        EditorGUILayout.BeginHorizontal();
-
-                        EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 60;
-
-                        psSettings.UseTestMode = EditorGUILayout.Toggle("Use Test Mode:", psSettings.UseTestMode);
-
-                        if (psSettings.UseTestMode == false)
+                        using (new EditorGUILayout.VerticalScope(GUI.skin.box))
                         {
-                            GUILayout.FlexibleSpace();
+                            string pre = psSettings.AppId;
+                            psSettings.AppId = EditorGUILayout.TextField("PubScale APP ID:", psSettings.AppId);
 
-                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 30;
-                            psSettings.EnablePluginLogsInRelease = EditorGUILayout.Toggle("Enable Plugin Logs in Release:", psSettings.EnablePluginLogsInRelease);
-
+                            if (IsStringChanged(pre, psSettings.AppId))
+                                changesDetected = true;
                         }
 
-                        EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 20;
-
-
-                        EditorGUILayout.EndHorizontal();
-
+                        EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 40;
                         EditorGUILayout.Space();
+                    }
+                    else if (selection == 1)
+                    {
 
-                        psSettings.IsPreCachedNativeAdUnits = EditorGUILayout.Toggle("Enable Native Ads Caching: ", psSettings.IsPreCachedNativeAdUnits);
+                        using (new EditorGUILayout.VerticalScope(GUI.skin.box))
+                        {
+                            PubEditorUX.DisplayHeading("NATIVE ADS");
 
-                        EditorGUILayout.Space();
+                            EditorGUILayout.BeginHorizontal();
 
-                        psSettings.UseAdaptiveColor = EditorGUILayout.Toggle("Use Adaptive Color: ", psSettings.UseAdaptiveColor);
-                        PubEditorUX.DisplayTip("Ensures contrast of Advertiser Logo color from background");
+                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 60;
 
-                        EditorGUILayout.Space();
+                            bool preBooleanSettingVal = false;
+
+                            preBooleanSettingVal = psSettings.UseTestMode;
+                            psSettings.UseTestMode = EditorGUILayout.Toggle("Use Test Mode:", psSettings.UseTestMode);
+
+                            if (preBooleanSettingVal != psSettings.UseTestMode)
+                                changesDetected = true;
+
+                            // if (psSettings.UseTestMode == false)
+                            // {
+                            //     GUILayout.FlexibleSpace();
+
+                            //     EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 30;
+
+                            //     preBooleanSettingVal = psSettings.ShowLogsForLiveAdUnits;
+                            //     psSettings.ShowLogsForLiveAdUnits = EditorGUILayout.Toggle("Enable Plugin Logs in Release:", psSettings.ShowLogsForLiveAdUnits);
+
+                            //     if (preBooleanSettingVal != psSettings.ShowLogsForLiveAdUnits)
+                            //         changesDetected = true;
+                            // }
+
+                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 50;
+
+
+                            EditorGUILayout.EndHorizontal();
+
+                            EditorGUILayout.Space();
+
+                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH;
+
 
 #if UNITY_IOS
-                        psSettings.Fallback_NativeAdID_IOS = EditorGUILayout.TextField("Fallback Native AD ID: ", psSettings.Fallback_NativeAdID_IOS);
+                        string preFallbackIOS = psSettings.Fallback_NativeAdID_IOS;
+                        psSettings.Fallback_NativeAdID_IOS = EditorGUILayout.TextField("Fallback Native ID IOS: ", psSettings.Fallback_NativeAdID_IOS);
+
+                        if (IsStringChanged(preFallbackIOS, psSettings.Fallback_NativeAdID_IOS))
+                            changesDetected = true;
 #else
-                        psSettings.Fallback_NativeAdID_Android = EditorGUILayout.TextField("Fallback Native AD ID: ", psSettings.Fallback_NativeAdID_Android);
+
+                            string preFallbackAnd = psSettings.Fallback_NativeAdID_Android;
+                            psSettings.Fallback_NativeAdID_Android = EditorGUILayout.TextField("Fallback Native ID Android: ", psSettings.Fallback_NativeAdID_Android);
+
+                            if (IsStringChanged(preFallbackAnd, psSettings.Fallback_NativeAdID_Android))
+                                changesDetected = true;
 #endif
 
+                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH;
 
-                        PubEditorUX.DisplayTip("Used in case there is delay in getting ad config from server");
+                            PubEditorUX.DisplayTip("Used in case there is delay in ad config from server");
 
-                        EditorGUILayout.Space();
+                            EditorGUILayout.Space();
 
+                        }
                     }
-                }
-                else if (selection == 2)
-                {
-                    using (new EditorGUILayout.VerticalScope(GUI.skin.box))
+                    else if (selection == 2)
                     {
-                        if (GUILayout.Button("Integration Docs"))
+
+
+                        using (new EditorGUILayout.VerticalScope(GUI.skin.box))
                         {
-                            Application.OpenURL("https://greedygame.github.io/sdkone-unity_native_ads_plugin/");
+                            EditorGUILayout.Space();
+
+                            if (GUILayout.Button("Integration Docs"))
+                            {
+                                Application.OpenURL("https://greedygame.github.io/sdkone-unity_native_ads_plugin/");
+                            }
+
+                            EditorGUILayout.Space();
+                            EditorGUILayout.Space();
+
+                            if (GUILayout.Button("Scripting API"))
+                            {
+                                Application.OpenURL("https://github.com/GreedyGame/sdkone-unity_native_ads_plugin/wiki");
+                            }
+
+                            EditorGUILayout.Space();
+                            EditorGUILayout.Space();
+
+                            if (GUILayout.Button("Website"))
+                            {
+                                Application.OpenURL("https://pubscale.com/ad-revenue-optimization-platform");
+                            }
+
+                            EditorGUILayout.Space();
                         }
 
-                        EditorGUILayout.Space();
-                        EditorGUILayout.Space();
-
-                        if (GUILayout.Button("Scripting API"))
-                        {
-                            Application.OpenURL("https://github.com/GreedyGame/sdkone-unity_native_ads_plugin/wiki");
-                        }
-
-                        EditorGUILayout.Space();
-                        EditorGUILayout.Space();
-
-                        if (GUILayout.Button("Website"))
-                        {
-                            Application.OpenURL("https://pubscale.com/ad-revenue-optimization-platform");
-                        }
+                    }
+                    else
+                    {
+                        EditorGUILayout.LabelField(@"COMING SOON...", textStyle);
                     }
 
-                }
-                else
-                {
-                    EditorGUILayout.LabelField(@"COMING SOON...", textStyle);
                 }
 
                 GUILayout.EndArea();
 
+
+                if (changesDetected)
+                {
+                    SaveSettingsData();
+                }
             }
 
-
             EditorGUIUtility.labelWidth = defaultEditorLabelWidth;
-
-
         }
+
+
+
+
+        bool IsStringChanged(string s1, string s2)
+        {
+            if (string.CompareOrdinal(s1, s2) != 0)
+                return true;
+            else
+                return false;
+        }
+
+
+        void SaveSettingsData()
+        {
+            if (psSettings != null)
+            {
+                EditorUtility.SetDirty(psSettings);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
+        }
+
+
 
     }
 }

@@ -11,7 +11,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         private static readonly int JumpKey = Animator.StringToHash("Jump");
         private static readonly int FlipKey = Animator.StringToHash("Flip");
 
-        public static event Action<int> OnFloor;
+        public static event Action<FloorHandler> OnFloor;
         [SerializeField] private AudioClip[] splatSounds;
         [SerializeField] private AudioClip[] hitSounds;
         [SerializeField] private AudioClip[] jumpSounds;
@@ -37,6 +37,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         [SerializeField] private LayerMask wallMask;
         [SerializeField] private float coyoteTime = 0.2f;
         [SerializeField] private float jumpBufferTime = 0.2f;
+        [SerializeField] private float fallVelocity = 2.5f;
         [SerializeField] private AudioSource audioSrc;
         private FloorHandler myFloor;
         private bool wasGrounded;
@@ -44,7 +45,6 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         private bool onRightWall;
         private bool onLeftWall;
         private bool isAlive = true;
-        private bool isJumping;
         private bool GameOn = false;
         private bool haveTutorial = false;
         private float coyoteTimeCounter;
@@ -53,6 +53,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         private bool facingLeft;
         private bool first;
         private bool CanJump;
+        private int numberofJumps;
 
         private void Awake()
         {
@@ -106,12 +107,29 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         {
             if (!isAlive)
                 return;
+            if ((Input.GetMouseButtonDown(0) || (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0 && GameOn)) && (first || CheckUI()))
+            {
+                first = false;
+                jumpBufferCounter = jumpBufferTime;
+            }
+            else
+            {
+                jumpBufferCounter -= Time.deltaTime;
+            }
+        }
+        //public void Test()
+        //{
+        //    jumpBufferCounter = jumpBufferTime;
+        //}
+        private void FixedUpdate()
+        {
+            if (!isAlive)
+                return;
             RaycastHit2D groundHit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundMask);
             RaycastHit2D groundHit2 = Physics2D.Raycast(groundCheck2.position, Vector2.down, groundCheckDistance, groundMask);
             RaycastHit2D rightWallHit = Physics2D.Raycast(wallCheckRight.position, transform.right, wallCheckDistance, wallMask);
             RaycastHit2D leftWallHit = Physics2D.Raycast(wallCheckLeft.position, -transform.right, wallCheckDistance, wallMask);
-            if (!isJumping)
-                grounded = groundHit || groundHit2;
+            grounded = groundHit || groundHit2;
             onRightWall = rightWallHit;
             onLeftWall = leftWallHit;
             rb.velocity = new Vector2(transform.right.x * moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
@@ -129,14 +147,11 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             }
             if (!wasGrounded && grounded)
             {
-                //audioSrc.PlayOneShot(_footsteps[UnityEngine.Random.Range(0, _footsteps.Length)]);
-
-                characterAnim.SetTrigger(GroundedKey);
                 landParticle.Play();
             }
             if (rb.velocity.y > 0)
             {
-                rb.gravityScale = 1.5f;
+                rb.gravityScale = fallVelocity;
             }
             else
             {
@@ -144,10 +159,9 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                 anim.SetBool("run", false);
                 anim.SetBool("jump", false);
             }
-            if (groundHit)
+            if (grounded)
             {
-                //if (coyoteTimeCounter != coyoteTime)
-                //    holder.DOScale(new Vector3(1f, 0.45f, 1), 0.2f).SetEase(Ease.InBounce).OnComplete(() => { holder.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBounce); });
+                characterAnim.SetTrigger(GroundedKey);
                 moveParticle.Play();
                 anim.SetBool("run", true);
                 coyoteTimeCounter = coyoteTime;
@@ -158,43 +172,24 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                 anim.SetBool("run", false);
                 coyoteTimeCounter -= Time.deltaTime;
             }
-            if ((Input.GetMouseButtonDown(0) || (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0 && GameOn)) && (first || CheckUI()))
+           
+            if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f && CanJump)
             {
-                first = false;
-                // moveParticle.Stop();
-                jumpBufferCounter = jumpBufferTime;
-                // moveParticle.Stop();
-                //Jump();
-            }
-            else
-            {
-                jumpBufferCounter -= Time.deltaTime;
-            }
-            if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !isJumping && CanJump)
-            {
+                CanJump = false;
                 rb.gravityScale = 1;
+                rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-                StartCoroutine(JumpCooldown());
                 jumpParticle.Play();
                 anim.SetBool("jump", true);
-                //  moveParticle.Stop();
                 audioSrc.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
                 characterAnim.SetTrigger(JumpKey);
                 characterAnim.ResetTrigger(GroundedKey);
                 audioSrc.PlayOneShot(jumpSounds[UnityEngine.Random.Range(0, jumpSounds.Length)], 0.3f);
-                coyoteTimeCounter = 0f;
-                jumpBufferCounter = 0f;
-                //StartCoroutine(JumpDelay());
+                coyoteTimeCounter = -1f;
+                jumpBufferCounter = -1f;
+                CanJump = true;
             }
             wasGrounded = grounded;
-        }
-        private IEnumerator JumpCooldown()
-        {
-            isJumping = true;
-            CanJump = false;
-            yield return new WaitForSeconds(0.6f);
-            isJumping = false;
-            CanJump = true;
         }
         public void Die(bool delay = false)
         {
@@ -267,7 +262,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             {
                 myFloor = collision.GetComponent<FloorHandler>();
                 if (!myFloor.first)
-                    OnFloor?.Invoke(myFloor.GetXStatus());
+                    OnFloor?.Invoke(myFloor);
                 myFloor.PlayerOnFloor();
             }
             else if (collision.CompareTag("bounds"))

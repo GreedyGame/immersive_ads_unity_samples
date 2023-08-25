@@ -32,9 +32,15 @@ namespace PubScale.SdkOne.NativeAds.Sample
             PubScaleManager.LogHandler -= NativeAdManager_LogHandler; //Unsubcribe to Native ad manager log event
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
         }
-        private void NativeAdManager_LogHandler(string obj,NativeAdHolder nativeAd)
+        private void NativeAdManager_LogHandler(string obj,PubScaleLogData logData)
         {
-            LogMessage(obj);
+            string log = "";
+            foreach (var item in logData.EventData)
+            {
+                log += item.k + "=" + item.v + "\n";
+            }
+            log = obj + "\n" + log;
+            LogMessage(log);
         }
         /// <summary>
         /// Logs message to the log ui console.

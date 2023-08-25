@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -10,63 +8,60 @@ namespace PubScale.SdkOne.NativeAds
     public class NativeAdDisplayHandlerEditor : Editor
     {
 
-        NativeAdDisplayHandler targetDisplayer;
+        protected NativeAdDisplayHandler targetDisplayer;
         protected GUIStyle styleValid;
         protected GUIStyle styleInvalid;
 
-
         //   SerializedProperty Prop_AdHolder;
-        SerializedProperty Prop_AdIconHolder;
-        SerializedProperty Prop_AdIconImg;
-        SerializedProperty Prop_AdChoicesImg;
-        SerializedProperty Prop_ImageTextures;
+        protected SerializedProperty Prop_AdIconHolder;
+        protected SerializedProperty Prop_AdIconImg;
+        protected SerializedProperty Prop_AdChoicesImg;
+        protected SerializedProperty Prop_ImageTextures;
 
 
-        SerializedProperty Prop_AdHeadlineTxt;
-        SerializedProperty Prop_AdCallToActionTxt;
-        SerializedProperty Prop_AdAdvertiserTxt;
-        SerializedProperty Prop_BodyTxt;
-        SerializedProperty Prop_PriceTxt;
-        SerializedProperty Prop_StoreTxt;
+        protected SerializedProperty Prop_AdHeadlineTxt;
+        protected SerializedProperty Prop_AdCallToActionTxt;
+        protected SerializedProperty Prop_AdAdvertiserTxt;
+        protected SerializedProperty Prop_BodyTxt;
+        protected SerializedProperty Prop_PriceTxt;
+        protected SerializedProperty Prop_StoreTxt;
 
 
-        SerializedProperty Prop_StarRatingTxt;
-        SerializedProperty Prop_StarRatingStroke;
-        SerializedProperty Prop_StarRatingFill;
+        protected SerializedProperty Prop_StarRatingTxt;
+        protected SerializedProperty Prop_StarRatingStroke;
+        protected SerializedProperty Prop_StarRatingFill;
 
 
-        SerializedProperty Prop_AdIconDarkBgTint;
-        SerializedProperty Prop_AdIconLightBgTint;
+        protected SerializedProperty Prop_AdIconDarkBgTint;
+        protected SerializedProperty Prop_AdIconLightBgTint;
 
 
+        protected SerializedProperty Prop_Show_AdIconHolder;
+        protected SerializedProperty Prop_Show_AdIconImg;
+        protected SerializedProperty Prop_Show_AdChoicesImg;
+        protected SerializedProperty Prop_Show_ImageTextures;
 
-        SerializedProperty Prop_Show_AdIconHolder;
-        SerializedProperty Prop_Show_AdIconImg;
-        SerializedProperty Prop_Show_AdChoicesImg;
-        SerializedProperty Prop_Show_ImageTextures;
-
-        SerializedProperty Prop_Show_AdHeadlineTxt;
-        SerializedProperty Prop_Show_AdCallToActionTxt;
-        SerializedProperty Prop_Show_AdAdvertiserTxt;
-        SerializedProperty Prop_Show_BodyTxt;
-        SerializedProperty Prop_Show_PriceTxt;
-        SerializedProperty Prop_Show_StoreTxt;
-        SerializedProperty Prop_Show_StarRating;
-        SerializedProperty Prop_Show_StarRatingAsText;
-        SerializedProperty Prop_Show_StarRatingAsVisual;
-
-
-        PubEditorUXState prevEditorGUIState = new PubEditorUXState();
+        protected SerializedProperty Prop_Show_AdHeadlineTxt;
+        protected SerializedProperty Prop_Show_AdCallToActionTxt;
+        protected SerializedProperty Prop_Show_AdAdvertiserTxt;
+        protected SerializedProperty Prop_Show_BodyTxt;
+        protected SerializedProperty Prop_Show_PriceTxt;
+        protected SerializedProperty Prop_Show_StoreTxt;
+        protected SerializedProperty Prop_Show_StarRating;
+        protected SerializedProperty Prop_Show_StarRatingAsText;
+        protected SerializedProperty Prop_Show_StarRatingAsVisual;
 
 
-        bool foldableOptionalTextFields = false;
-
-        bool foldableOptionalVisualFields = false;
-        bool foldableShowStarRating = false;
-        bool foldableCustomizeVisuals = false;
+        protected PubEditorUXState prevEditorGUIState = new PubEditorUXState();
 
 
-        public void OnEnable()
+        protected bool foldableOptionalTextFields = false;
+        protected bool foldableOptionalVisualFields = false;
+        protected bool foldableShowStarRating = false;
+        protected bool foldableCustomizeVisuals = false;
+
+
+        public virtual void OnEnable()
         {
             targetDisplayer = (NativeAdDisplayHandler)target;
 
@@ -324,9 +319,20 @@ namespace PubScale.SdkOne.NativeAds
 
                         if (targetDisplayer.starRatingStroke != null)
                             targetDisplayer.starRatingStroke.gameObject.SetActive(Prop_Show_StarRatingAsVisual.boolValue);
-
-
                     }
+                    else
+                    {
+
+                        if (targetDisplayer.starRatingTxt != null)
+                            targetDisplayer.starRatingTxt.gameObject.SetActive(false);
+
+                        if (targetDisplayer.starRatingFill != null)
+                            targetDisplayer.starRatingFill.gameObject.SetActive(false);
+
+                        if (targetDisplayer.starRatingStroke != null)
+                            targetDisplayer.starRatingStroke.gameObject.SetActive(false);
+                    }
+
                 }
             }
 

@@ -22,21 +22,23 @@ namespace PubScale.SdkOne.NativeAds.Sample
             NativeAdCompanionTrigger.ShowAd -= ShowAd;                               //Unsubscrilbe to show/hide the native ad when requested
             CompanionDisplayer.FillCompanion -= CompanionDisplayer_FillCompanion;    //Unsubscrilbe to fill the native ad when requested
         }
-        private void CompanionDisplayer_FillCompanion(NativeAd nativeAd)
+        private void CompanionDisplayer_FillCompanion(NativeAd nativeAd,NativeAdHolder holder)
         {
             Debug.Log("Got companion fill");
             gotTheFill = true;
-            companionDisplay.FillAndRegister(nativeAd, true);
+            companionDisplay.FillAndRegister(nativeAd,holder ,true);
         }
 
          void ShowAd(bool show)
         {
 #if UNITY_EDITOR
-            anim.SetBool("Show", show);
+            if (anim != null)
+                anim.SetBool("Show", show);
 #endif
             if (!gotTheFill)
                 return;
-            anim.SetBool("Show", show);
+            if (anim != null)
+                anim.SetBool("Show", show);
 
         }
     }

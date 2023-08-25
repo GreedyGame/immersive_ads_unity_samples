@@ -8,30 +8,24 @@ namespace PubScale.SdkOne
 
     public static class PubEditorUX
     {
-        const string RootPath = "Assets/PubscaleSDK/"; // Make sure to add a trailing /
+
+        public const string RootPath = "Assets/PubscaleSDK/"; // Make sure to add a trailing /
+
 
         #region SDK_SETTINGS
 
         public const string PackageSettingsPath = RootPath + "Common/Resources/PubScaleSettings.asset";
-        public const string PackageSettingsFolder = "Common";
+        public const string PackageCommonFolder = "Common";
         public const string PackageSettingsFolderPath = RootPath + "Common/Resources";
 
         #endregion
 
 
-        #region DOCS
-        public const string PackageDocumentationPath = RootPath + "Common/PubScaleDocs.pdf";
-        public const string PackageDocumentationName = "PubScaleDocs";
-
-        #endregion
-
-
-        public const string imagePath = RootPath + "Common/Images/pubscale_logo_720.png";
+        //  public const string imagePath = RootPath + "Common/Images/pubscale_logo_720.png";
         public const string imageName = "pubscale_logo_720";
 
+
         public const string packageName = "SDK ONE";
-
-
 
         public const float DEF_LABEL_WIDTH = 160;
         static Color PubScaleGreen = new Color(0.184f, 0.803f, 0.694f);
@@ -44,6 +38,17 @@ namespace PubScale.SdkOne
         static GUISkin pubSkin;
         static GUIStyle titleStyle;
         static GUIStyle toolTipStyle;
+
+
+        public static void CheckResourcesFolderInCommon()
+        {
+            if (!AssetDatabase.IsValidFolder(PubEditorUX.PackageSettingsFolderPath))
+            {
+                AssetDatabase.CreateFolder(PubEditorUX.RootPath, PubEditorUX.PackageCommonFolder);
+                AssetDatabase.CreateFolder(PubEditorUX.RootPath + PubEditorUX.PackageCommonFolder, "Resources");
+            }
+
+        }
 
         public static void Start_CustomEditor(SerializedObject serializedObj, PubEditorUXState prevGUIState)
         {

@@ -199,9 +199,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4.5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: facad3b85aec9ec44a88164dc294204a, type: 2}
-  m_sharedMaterial: {fileID: -7888040125846280599, guid: facad3b85aec9ec44a88164dc294204a,
-    type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -735,9 +734,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dummy Native Ad
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: facad3b85aec9ec44a88164dc294204a, type: 2}
-  m_sharedMaterial: {fileID: -7888040125846280599, guid: facad3b85aec9ec44a88164dc294204a,
-    type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -906,9 +904,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '#For test ads check in device'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: facad3b85aec9ec44a88164dc294204a, type: 2}
-  m_sharedMaterial: {fileID: -7888040125846280599, guid: facad3b85aec9ec44a88164dc294204a,
-    type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1557,9 +1554,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: pubscale
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: facad3b85aec9ec44a88164dc294204a, type: 2}
-  m_sharedMaterial: {fileID: -7888040125846280599, guid: facad3b85aec9ec44a88164dc294204a,
-    type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1728,9 +1724,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: DUMMY AD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: facad3b85aec9ec44a88164dc294204a, type: 2}
-  m_sharedMaterial: {fileID: -7888040125846280599, guid: facad3b85aec9ec44a88164dc294204a,
-    type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

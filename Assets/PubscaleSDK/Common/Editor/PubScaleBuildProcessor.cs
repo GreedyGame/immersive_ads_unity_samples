@@ -125,7 +125,7 @@ public class PubScaleBuildProcessor : IPreprocessBuildWithReport, IPostprocessBu
 
         if (pubScaleErrors > 0)
         {
-            throw new BuildFailedException("PubScale Build PreProcess has detected some issues. Please see Warning messages.");
+            throw new BuildFailedException("PubScaleSDK has detected some build issues. Please check Warning messages in Console.");
         }
 
 
