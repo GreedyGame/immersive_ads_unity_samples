@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/iOS 14 Advertising Support/1.0.0/01 Context Screen/Context Screen
+      Sample.unity
+    guid: a2154acf9dc1c46e5a8df649580ad6b9
+  - enabled: 1
     path: Assets/NativeDemo/MainScene/MainScene.unity
     guid: 6cbb131be6f1bdd41a3b94d249c776b8
   - enabled: 1

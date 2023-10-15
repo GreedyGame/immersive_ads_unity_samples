@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 1486247019, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
   m_Name: PubScaleSettings
   m_EditorClassIdentifier: 
-  AppID: 54976610
   UseTestMode: 1
-  EnablePluginLogsInRelease: 0
-  Fallback_NativeAdID_Android: ca-app-pub-3940256099942544/2247696110
-  Fallback_NativeAdID_IOS: 
-  IsPreCachedNativeAdUnits: 1
-  UseAdaptiveColor: 1
+  Fallback_NativeAdID_Android: ca-app-pub-8572140050384873/8527362989
+  Fallback_NativeAdID_IOS: ca-app-pub-4073866383873410/6600238459
+  AppID: 50927155
   IsFirstTimeUsingTheAsset: 0
