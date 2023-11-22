@@ -19774,10 +19774,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1670417171}
-  - component: {fileID: 1670417172}
   - component: {fileID: 1670417173}
   m_Layer: 0
-  m_Name: Scripts
+  m_Name: OfferwallManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19798,19 +19797,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1670417172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670417170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8350cbeb1c3464282b40e092b652ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsInitialized: 0
 --- !u!114 &1670417173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19832,6 +19818,9 @@ MonoBehaviour:
   failedUI: {fileID: 1730501535}
   rewardAmount: 0
   rewardAmountText: {fileID: 41807375}
+  OfferWallBackgroundImage: {fileID: 21300000, guid: 6b273a6612daad74899271ccd4ad868c, type: 3}
+  isFullScreen: 0
+  devModeEnabled: 0
 --- !u!1 &1730501535
 GameObject:
   m_ObjectHideFlags: 0

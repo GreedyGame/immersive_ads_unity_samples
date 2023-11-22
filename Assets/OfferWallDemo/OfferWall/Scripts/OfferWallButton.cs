@@ -1,4 +1,4 @@
-using Pubscale.OfferWall;
+using PubScale.OfferWall;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +12,7 @@ public class OfferWallButton : MonoBehaviour
         offerBtn.onClick.RemoveAllListeners();
         offerBtn.onClick.AddListener(() =>
         {
-            OfferWallManager.OpenOfferWall();
+            OfferWallManager.ShowOfferWall();
         });
     }
     private void OnDestroy()
@@ -27,7 +27,7 @@ public class OfferWallButton : MonoBehaviour
     private void OnEnable()
     {
         offerBtn.gameObject.SetActive(false);
-        if (OfferWallManager.instance!=null&& OfferWallManager.instance.IsInitialized)
+        if (OfferWallManager.IsInitialized)
             offerBtn.gameObject.SetActive(true);
     }
 }

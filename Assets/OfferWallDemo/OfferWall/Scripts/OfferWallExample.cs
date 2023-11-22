@@ -1,4 +1,4 @@
-using Pubscale.OfferWall;
+using PubScale.OfferWall;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +13,9 @@ public class OfferWallExample : MonoBehaviour
     [SerializeField] private GameObject failedUI;
     [SerializeField] private int rewardAmount = 0;
     [SerializeField] private TextMeshProUGUI rewardAmountText;
+    [SerializeField] private Sprite OfferWallBackgroundImage;
+    [SerializeField] private bool isFullScreen = false;
+    [SerializeField] private bool devModeEnabled = false;
     private string uniqueID = "";
 
     private void Awake()
@@ -30,6 +33,11 @@ public class OfferWallExample : MonoBehaviour
     }
     public void Init()
     {
+        string resourceFileName = ""; 
+        if(OfferWallBackgroundImage != null)
+        {
+            resourceFileName = OfferWallBackgroundImage.name;
+        }
 #if !UNITY_ANDROID || UNITY_EDITOR
 return;
 #endif
@@ -52,7 +60,7 @@ return;
         OfferWallManager.OnOfferClaimed += OfferWallManager_OnOfferClaimed;
         OfferWallManager.OnInitialize += OfferWallManager_OnInitialize;
         OfferWallManager.OnInitializeFailed += OfferWallManager_OnInitializeFailed;
-        OfferWallManager.Initialize(appKey, uniqueID, OfferWallOrientation.PORTRAIT, true);
+        OfferWallManager.InitializeOfferWall(appKey, uniqueID,resourceFileName,isFullScreen, devModeEnabled);
     }
 
     private void OfferWallManager_OnInitializeFailed(string obj)

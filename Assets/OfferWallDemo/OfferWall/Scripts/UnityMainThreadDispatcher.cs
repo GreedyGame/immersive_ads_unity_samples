@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Threading.Tasks;
 
-namespace Pubscale.Common
+namespace PubScale.Common
 {
 	/// </summary>
 	public class UnityMainThreadDispatcher : UnityEngine.MonoBehaviour

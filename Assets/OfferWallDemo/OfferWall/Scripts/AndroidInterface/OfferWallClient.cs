@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using Pubscale.Common;
+using PubScale.Common;
 
-namespace Pubscale.OfferWall
+namespace PubScale.OfferWall
 {
     public class OfferWallClient : AndroidJavaProxy, IBaseClient
     {
@@ -10,14 +10,14 @@ namespace Pubscale.OfferWall
 
         public event Action OnOfferWallShowed;
         public event Action OnOfferWallClosed;
-        public event Action<string, string> OnRewardClaimed;
-        public event Action<string> OnFailed;
-        public event Action OnInitSuccess;
-        public event Action<string> OnInitFailed;
-        public event Action<string> OnDataEncrypted;
-        public event Action<string> OnAppographyDataFetched;
+        public event Action<string, string> OnOfferWallRewardClaimed;
+        public event Action<string> OnOfferWallShowFailed;
+        public event Action OnOfferWallInitSuccess;
+        public event Action<string> OnOfferWallInitFailed;
+        //public event Action<string> OnDataEncrypted;
+        //public event Action<string> OnAppographyDataFetched;
 
-        public OfferWallClient() : base(Utils.OfferWallListenerClassName)
+        public OfferWallClient() : base(Utils.OfferWallListnerClassName)
         {
             AndroidJavaClass playerClass = new AndroidJavaClass(Utils.UnityActivityClassName);
             AndroidJavaObject activity = playerClass.GetStatic<AndroidJavaObject>("currentActivity");
@@ -25,52 +25,27 @@ namespace Pubscale.OfferWall
         }
         #region OfferWallClass methods.
 
-        public void InitOfferWall(string uniqueId, string appKey, int orientation, bool isDev)
+        public void InitOfferWall(string appKey, string uniqueId,string bgImagePath, bool isFullScreen,bool isDev)
         {
-            if(this.offerWallClient == null)
-            {
-                Debug.Log("OfferWallClient is null");
-                return;
-            }
-            this.offerWallClient.Call("InitOfferWall", uniqueId, appKey, orientation, isDev);
+            this.offerWallClient.Call("InitOfferWall", appKey, uniqueId,bgImagePath,isFullScreen, isDev);
         }
         public void ShowOfferWall()
         {
-            if (this.offerWallClient == null)
-            {
-                Debug.Log("OfferWallClient is null");
-                return;
-            }
             this.offerWallClient.Call("ShowOfferWall");
         }
         public void DisposeOfferWall()
         {
-            if (this.offerWallClient == null)
-            {
-                Debug.Log("OfferWallClient is null");
-                return;
-            }
             this.offerWallClient.Call("DisposeOfferWall");
 
         }
-        public void EncryptData(string key, string json)
-        {
-            if (this.offerWallClient == null)
-            {
-                Debug.Log("OfferWallClient is null");
-                return;
-            }
-            this.offerWallClient.Call("EncryptJson", key,json);
-        }
-        public void GetAppographyData()
-        {
-            if (this.offerWallClient == null)
-            {
-                Debug.Log("OfferWallClient is null");
-                return;
-            }
-            this.offerWallClient.Call("GetAppographyData");
-        }
+        //public void EncryptData(string key, string json)
+        //{
+        //    this.offerWallClient.Call("EncryptJson", key,json);
+        //}
+        //public void GetAppographyData()
+        //{
+        //    this.offerWallClient.Call("GetAppographyData");
+        //}
         #endregion
 
         #region Callbacks from Offer Wall Listner.
@@ -84,31 +59,31 @@ namespace Pubscale.OfferWall
         }
         public void onRewardClaimed(string amount, string currency)
         {
-            OnRewardClaimed?.Invoke(amount, currency);
+            OnOfferWallRewardClaimed?.Invoke(amount, currency);
         }
         public void onFailed(string cause)
         {
-            OnFailed?.Invoke(cause);
+            OnOfferWallShowFailed?.Invoke(cause);
         }
 
         public void onInitSuccess()
         {
-            OnInitSuccess?.Invoke();
+            OnOfferWallInitSuccess?.Invoke();
         }
         public void onInitFailed(string initError)
         {
-            OnInitFailed?.Invoke(initError);
+            OnOfferWallInitFailed?.Invoke(initError);
         }
 
-        public void onDataEncrypted(string encryptedData)
-        {
-            OnDataEncrypted?.Invoke(encryptedData);
-        }
+        //public void onDataEncrypted(string encryptedData)
+        //{
+        //    OnDataEncrypted?.Invoke(encryptedData);
+        //}
 
-        public void onAppographyDataFetched(string appographyData)
-        {
-            OnAppographyDataFetched?.Invoke(appographyData);
-        }
+        //public void onAppographyDataFetched(string appographyData)
+        //{
+        //    OnAppographyDataFetched?.Invoke(appographyData);
+        //}
 
 
         #endregion

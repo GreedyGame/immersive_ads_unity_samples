@@ -1,89 +1,61 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Pubscale.OfferWall
+namespace PubScale.OfferWall
 {
     public class OfferWall
     {
         private OfferWallClient client;
         private string appKey;
         private string uniqueId;
-        private int orientation;
+        private bool isFullScreen;
         private bool isDev;
+        private string bgImagePath;
 
         public event Action OnOfferWallShowed;
         public event Action OnOfferWallClosed;
-        public event Action<string, string> OnRewardClaimed;
-        public event Action<string> OnFailed;
-        public event Action OnInitSuccess;
-        public event Action<string> OnInitFailed;
-        public event Action<string> OnDataEncrypted;
-        public event Action<string> OnAppographyDataRecieved;
+        public event Action<string, string> OnOfferWallRewardClaimed;
+        public event Action<string> OnOfferWallShowFailed;
+        public event Action OnOfferWallInitSuccess;
+        public event Action<string> OnOfferWallInitFailed;
+        //public event Action<string> OnDataEncrypted;
+        //public event Action<string> OnAppographyDataRecieved;
 
         // Creates an OfferWall Instance.
-        public OfferWall(string appKey, string uniqueId, int orientation, bool isDev)
+        public OfferWall(string appKey, string uniqueId,string bgImagePath,bool isFullScreen, bool isDev)
         {
             this.client = new OfferWallClient();
             this.appKey = appKey;
             this.uniqueId = uniqueId;
-            this.orientation = orientation;
+            this.isFullScreen = isFullScreen;
             this.isDev = isDev;
+            this.bgImagePath = bgImagePath;
             ConfigureInterEvents();
         }
 
         // Loads an Reward.
         public void InitOfferWall()
         {
-            if (client == null)
-            {
-                Debug.Log("OfferWall is null");
-                return;
-            }
-            client.InitOfferWall(uniqueId, appKey, orientation, isDev);
+            client.InitOfferWall(appKey,uniqueId,bgImagePath, isFullScreen, isDev);
         }
         public void ShowOfferWall()
         {
-            if (client == null)
-            {
-                Debug.Log("OfferWall is null");
-                return;
-            }
             client.ShowOfferWall();
         }
         public void DisposeOfferWall()
         {
-            if (client == null)
-            {
-                Debug.Log("OfferWall is null");
-                return;
-            }
             client.DisposeOfferWall();
         }
-        public void EncryptData(string key, string json)
-        {
-            if (client == null)
-            {
-                Debug.Log("OfferWall is null");
-                return;
-            }
-            client.EncryptData(key, json);
-        }
-        public void GetAppographyData()
-        {
-            if (client == null)
-            {
-                Debug.Log("OfferWall is null");
-                return;
-            }
-            client.GetAppographyData();
-        }
+        //public void EncryptData(string key, string json)
+        //{
+        //    client.EncryptData(key, json);
+        //}
+        //public void GetAppographyData()
+        //{
+        //    client.GetAppographyData();
+        //}
         private void ConfigureInterEvents()
         {
-            if (client == null)
-            {
-                Debug.Log("OfferWall is null");
-                return;
-            }
             this.client.OnOfferWallShowed += () =>
             {
                 Debug.Log("OnOfferWallShowed");
@@ -94,36 +66,36 @@ namespace Pubscale.OfferWall
                 Debug.Log("OnOfferWallClosed");
                 OnOfferWallClosed?.Invoke();
             };
-            this.client.OnRewardClaimed += (amount, currency) =>
+            this.client.OnOfferWallRewardClaimed += (amount, currency) =>
             {
                 Debug.Log("OnRewardClaimed");
-                OnRewardClaimed?.Invoke(amount, currency);
+                OnOfferWallRewardClaimed?.Invoke(amount, currency);
             };
-            this.client.OnFailed += (cause) =>
+            this.client.OnOfferWallShowFailed += (cause) =>
             {
                 Debug.Log("OnFailed");
-                OnFailed?.Invoke(cause);
+                OnOfferWallShowFailed?.Invoke(cause);
             };
-            this.client.OnInitSuccess += () =>
+            this.client.OnOfferWallInitSuccess += () =>
             {
                 Debug.Log("OnInitSuccess");
-                OnInitSuccess?.Invoke();
+                OnOfferWallInitSuccess?.Invoke();
             };
-            this.client.OnInitFailed += (initError) =>
+            this.client.OnOfferWallInitFailed += (initError) =>
             {
                 Debug.Log("OnInitFailed");
-                OnInitFailed?.Invoke(initError);
+                OnOfferWallInitFailed?.Invoke(initError);
             };
-            this.client.OnDataEncrypted += (encryptedData) =>
-            {
-                Debug.Log("OnDataEncrypted");
-                OnDataEncrypted?.Invoke(encryptedData);
-            };
-            this.client.OnAppographyDataFetched += (appographyData) =>
-            {
-                Debug.Log("OnAppographyDataRecieved");
-                OnAppographyDataRecieved?.Invoke(appographyData);
-            };
+            //this.client.OnDataEncrypted += (encryptedData) =>
+            //{
+            //    Debug.Log("OnDataEncrypted");
+            //    OnDataEncrypted?.Invoke(encryptedData);
+            //};
+            //this.client.OnAppographyDataFetched += (appographyData) =>
+            //{
+            //    Debug.Log("OnAppographyDataRecieved");
+            //    OnAppographyDataRecieved?.Invoke(appographyData);
+            //};
         }
 
     }

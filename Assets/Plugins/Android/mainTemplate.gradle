@@ -7,7 +7,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:22.0.0' // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7
     implementation 'com.google.android.ump:user-messaging-platform:2.0.0' // Assets/GoogleMobileAds/Editor/GoogleUmpDependencies.xml:7
     implementation 'com.google.code.gson:gson:2.8.5' // Assets/GoogleMobileAdsNative/Editor/GoogleMobileAdsNativeDependencies.xml:7
-    implementation 'com.pubscale.sdkone:offerwall:0.02-rc1' // Assets/OfferWallDemo/OfferWall/Editor/OfferWallDependencies.xml:7
+    implementation 'com.pubscale.sdkone:offerwall:1.0.5' // Assets/OfferWallDemo/OfferWall/Editor/OfferWallDependencies.xml:8
 // Android Resolver Dependencies End
 **DEPS**}
 

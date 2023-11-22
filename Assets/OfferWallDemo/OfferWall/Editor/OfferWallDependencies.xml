@@ -3,22 +3,8 @@
 	  <repositories>
 		  <repository>https://jitpack.io</repository>
 		  <repository>https://storage.googleapis.com/sdkx-internal-release-bucket</repository>
+		  <repository>https://storage.googleapis.com/caterpillar-libs-bucket</repository>
 	  </repositories>
-    <androidPackage spec="com.pubscale.sdkone:offerwall:0.02-rc1"/>
-	  <!--<androidPackage spec="androidx.core:core-ktx:1.9.0"/>
-	  <androidPackage spec="androidx.appcompat:appcompat:1.6.1"/>
-	  <androidPackage spec="androidx.work:work-runtime-ktx:2.8.0"/>
-	  <androidPackage spec="org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"/>
-	  <androidPackage spec="androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"/>
-	  <androidPackage spec="com.google.guava:guava:28.0-android"/>
-	  <androidPackage spec="com.squareup.retrofit2:retrofit:2.9.0"/>
-	  <androidPackage spec="com.squareup.retrofit2:converter-gson:2.9.0"/>
-	  <androidPackage spec="com.squareup.okhttp3:logging-interceptor:4.9.1"/>
-	  <androidPackage spec="androidx.ads:ads-identifier:1.0.0-alpha04"/>
-	  <androidPackage spec="com.google.android.gms:play-services-ads-identifier:18.0.1"/>
-	  <androidPackage spec="com.google.android.gms:play-services-appset:16.0.2"/>
-	  <androidPackage spec="com.github.bumptech.glide:glide:4.15.1"/>
-	  <androidPackage spec="androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"/>
-	  <androidPackage spec="androidx.constraintlayout:constraintlayout:2.1.4"/>-->
+	  <androidPackage spec="com.pubscale.sdkone:offerwall:1.0.5"/>
   </androidPackages>
 </dependencies>

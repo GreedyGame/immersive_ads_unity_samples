@@ -1,75 +1,58 @@
-using Pubscale.Common;
+using PubScale.Common;
 using System;
+using System.IO;
 using UnityEngine;
 
-namespace Pubscale.OfferWall
+namespace PubScale.OfferWall
 {
-    public enum OfferWallOrientation
+    public class OfferWallManager
     {
-        PORTRAIT = 0,
-        LANDSCAPE = 1
-    }
-    public class OfferWallManager : MonoBehaviour
-    {
-        public static OfferWallManager instance;
         public static event Action OnInitialize;
         public static event Action<string> OnInitializeFailed;
         public static event Action OnOfferWallShown;
         public static event Action OnOfferWallClosed;
         public static event Action<float> OnOfferClaimed;
-        public static event Action<string> OnOfferClaimFail;
-        private OfferWall offerWall;
-        private float amountEarned;
+        public static event Action<string> OnOfferWallShowFail;
+        private static OfferWall offerWall;
+        private static float amountEarned;
         private static Action<bool, float> UnlockRewardAction;
-        public bool IsInitialized = false;
-        private void Awake()
+        public static bool IsInitialized=false;
+        public static void InitializeOfferWall(string appKey, string uniqueID="",string resourceFileName = "" ,bool isFullScreen=true, bool DebugMode = false)
         {
-            if (instance == null)
+            if(Application.isEditor)
             {
-                instance = this;
+                Log("Offer Wall won't work in editor");
+                return;
+            }
+            if(appKey == "")
+            {
+                Log("App key is empty");
+                return;
+            }
+            string resourcePath = "";
+            if (resourceFileName != "")
+            {
+                if (CheckIfImageExists(resourceFileName))
+                {
+                    Log("Image file found");
+                    resourcePath = GetPersistentPath(resourceFileName);
+                }
+                else
+                {
+                    Log("Image file not found");
+                    resourcePath = CopyImageToPersistentPath(resourceFileName);
+                }
             }
             else
             {
-                Destroy(this);
+                Log("Resource file name is empty");
             }
-        }
-        public static void Initialize(string appKey, string uniqueID, OfferWallOrientation orientation, bool DebugMode = false)
-        {
-            if (instance == null)
-            {
-                Debug.LogError("Offer wall manager is not initiated");
-                return;
-            }
-            if (string.IsNullOrEmpty(appKey))
-            {
-                Debug.LogError("App key is null or empty");
-                return;
-            }
-            if (string.IsNullOrEmpty(uniqueID))
-            {
-                Debug.LogError("Unique ID is null or empty");
-                return;
-            }
-
-            instance.InitializePlugin(appKey, uniqueID, orientation, DebugMode);
-        }
-        void InitializePlugin(string appKey, string uniqueID,OfferWallOrientation orientation, bool DebugMode = false)
-        {
+            Log("Initializing Offer Wall");
             amountEarned = 0;
             UnityMainThreadDispatcher.Initialize();
-#if UNITY_EDITOR 
-            return;
-#endif
-#pragma warning disable CS0162 // Unreachable code detected
-            InitializeOfferWall(appKey,uniqueID,orientation == OfferWallOrientation.PORTRAIT ? 0 : 1, DebugMode);
-#pragma warning restore CS0162 // Unreachable code detected
-        }
-     
-        public void InitializeOfferWall(string appKey, string uniqueID, int orientation, bool DebugMode = false)
-        {
-            offerWall = new OfferWall(appKey, uniqueID, orientation, DebugMode);
+            offerWall = new OfferWall(appKey, uniqueID, resourcePath, isFullScreen, DebugMode);
             offerWall.InitOfferWall();
-            offerWall.OnInitSuccess += () =>
+            offerWall.OnOfferWallInitSuccess += () =>
             {
                 UnityMainThreadDispatcher.Instance().Enqueue(() =>
                 {
@@ -78,11 +61,11 @@ namespace Pubscale.OfferWall
                     Log("Offer wall init success");
                 });
             };
-            offerWall.OnInitFailed += (cause) =>
+            offerWall.OnOfferWallInitFailed += (cause) =>
             {
                 UnityMainThreadDispatcher.Instance().Enqueue(() =>
                 {
-                    IsInitialized=false;
+                    IsInitialized = false;
                     OnInitializeFailed?.Invoke(cause);
                     Log($"Offer wall init failed cause {cause}");
 
@@ -114,7 +97,7 @@ namespace Pubscale.OfferWall
                     }
                 });
             };
-            offerWall.OnRewardClaimed += (amount, currency) =>
+            offerWall.OnOfferWallRewardClaimed += (amount, currency) =>
             {
                 UnityMainThreadDispatcher.Instance().Enqueue(() =>
                 {
@@ -124,30 +107,16 @@ namespace Pubscale.OfferWall
 
                 });
             };
-            offerWall.OnFailed += (cause) =>
+            offerWall.OnOfferWallShowFailed += (cause) =>
             {
                 UnityMainThreadDispatcher.Instance().Enqueue(() =>
                 {
-                    OnOfferClaimFail?.Invoke(cause);
+                    OnOfferWallShowFail?.Invoke(cause);
                     Log($"Offer wall offer failed cause {cause}");
                 });
             };
         }
-        public static void UnlockReward(Action<bool, float> action)
-        {
-            UnlockRewardAction = action;
-            instance.ShowOfferWall();
-        }
-        public static void OpenOfferWall()
-        {
-            if (instance == null)
-            {
-                Debug.LogError("Offer wall manager is not initiated");
-                return;
-            }
-            instance.ShowOfferWall();
-        }
-        public void ShowOfferWall()
+        public static void ShowOfferWall()
         {
             if (offerWall == null)
             {
@@ -159,7 +128,7 @@ namespace Pubscale.OfferWall
                 offerWall.ShowOfferWall();
             });
         }
-        public void DisposeOfferWall()
+        public static void DisposeOfferWall()
         {
             if (offerWall == null)
             {
@@ -168,7 +137,49 @@ namespace Pubscale.OfferWall
             }
             offerWall.DisposeOfferWall();
         }
-        public void Log(string log)
+        public static void UnlockReward(Action<bool, float> action)
+        {
+            UnlockRewardAction = action;
+            ShowOfferWall();
+        }
+        static string CopyImageToPersistentPath(string resourceName)
+        {
+            // Load the image from Resources
+            Sprite imageSprite = Resources.Load<Sprite>(resourceName);
+
+            if (imageSprite != null)
+            {
+                // Convert the sprite to a texture
+                Texture2D texture = imageSprite.texture;
+
+                // Encode the texture to a PNG byte array
+                byte[] imageBytes = texture.EncodeToPNG();
+
+                // Combine the destination path with the image name and extension
+                string destinationFilePath = GetPersistentPath(resourceName);
+
+                // Write the image bytes to the persistent path
+                File.WriteAllBytes(destinationFilePath, imageBytes);
+
+                Debug.Log("Image saved to: " + destinationFilePath);
+                return destinationFilePath;
+            }
+            else
+            {
+                Debug.LogWarning("Image not found in Resources: " + resourceName);
+                return "";
+            }
+        }
+        static string GetPersistentPath(string resourceName)
+        {
+            string destinationFilePath = Path.Combine(Application.persistentDataPath, resourceName + ".png");
+            return destinationFilePath;
+        }
+        static bool CheckIfImageExists(string resourceName)
+        {
+            return File.Exists(GetPersistentPath(resourceName));
+        }
+        public static void Log(string log)
         {
             Debug.Log(log);
         }
