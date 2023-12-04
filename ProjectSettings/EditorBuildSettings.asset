@@ -30,4 +30,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/OfferWallDemo/OfferWall/OfferwallAndroid.unity
     guid: f84e2c9ae0e37064b8d3f4c20a018919
+  - enabled: 1
+    path: Assets/NativeDemo/Runner3d Demo/Scenes/Runner3d Demo.unity
+    guid: ce574c149fd62774e97ac55454520eb0
   m_configObjects: {}

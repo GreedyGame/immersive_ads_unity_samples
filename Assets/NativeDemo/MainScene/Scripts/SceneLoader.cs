@@ -17,5 +17,11 @@ namespace PubScale.SdkOne.NativeAds.Sample
             Fader.LoadScene(sceneName);
 
         }
+
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainScene");
+        }
     }
 }
