@@ -7,7 +7,7 @@ using TMPro;
 using PubScale.SdkOne.NativeAds;
 using System;
 using PubScale.Common;
-public class LandscapeAdAnimationVariant : MonoBehaviour
+public class LandscapeAdAnimationVariant2 : MonoBehaviour
 {
     public Transform pilot;
     public List<Sprite> images;  // Array to hold your big images
@@ -24,7 +24,7 @@ public class LandscapeAdAnimationVariant : MonoBehaviour
     public Image imageIn;    // Reference to the Image component for the incoming image
     public Image imageOut; 
     private float moveDistance = 800;
-    private float slideDuration = 2;
+    private float slideDuration = 1.5f;
     public float yOffset;
     NativeAdHolder nativeAdHolder;
 
@@ -46,27 +46,29 @@ public class LandscapeAdAnimationVariant : MonoBehaviour
         GetBigImageSprites();
         yield return new WaitForSeconds(.1f);
         Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(AdIcon.DOScale(1.5f, .2f));
         mySequence.Append(AdIcon.DOPunchScale(Vector3.one * .1f,.5f,0,0));
-        mySequence.Insert(1,AdIcon.DOScale(1, .3f));
-        mySequence.Insert(1,AdIcon.DOLocalMove(new Vector2(-270,80),.3f));
-        mySequence.Append(AdDetails.DOScale(1,0.3f));
-        mySequence.Append(AdDetails.DOPunchScale(Vector3.one * .05f,.5f,0,0));
-        mySequence.Append(buttonCta.DOScale(1,0.3f));
-        mySequence.Append(DOTween.To(()=> ctaString, x=>ctaString = x,targetCtaString, .5f).SetEase(Ease.InSine)).OnUpdate(()=>
-        {
-            ctaText.text = ctaString;
-        });
-        mySequence.InsertCallback(3,MyCallback);
+        mySequence.Append(AdIcon.DOScale(0, .5f));
+        // mySequence.Append(AdDetails.DOScale(1,0.3f));
+        // mySequence.Append(AdDetails.DOPunchScale(Vector3.one * .05f,.5f,0,0));
+        // mySequence.Insert(0,buttonCta.DOLocalMoveX(0,0.3f));
+        // mySequence.Append(DOTween.To(()=> ctaString, x=>ctaString = x,targetCtaString, .5f).SetEase(Ease.InSine)).OnUpdate(()=>
+        // {
+        //     ctaText.text = ctaString;
+        // });
+        mySequence.InsertCallback(1,MyCallback);
     }
 
     private IEnumerator MyNewMethod()
     {
         int currentIndex = 0;
         int count = 0;
+        AdDetails.DOLocalMoveX(0, .01f);
+        AdDetails.gameObject.SetActive(true);
+        pilot.DOLocalMoveX(0,slideDuration);    
+        buttonCta.DOLocalMoveX(0,slideDuration);
         yield return new WaitForSeconds(slideDuration); 
-        pilot.DOLocalMoveX(-moveDistance,slideDuration);    
-            // Initialize the first image position to the left of the screen
+        // Initialize the first image position to the left of the screen
+        pilot.DOLocalMoveX(-moveDistance, slideDuration);
 
         imageIn.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
         imageIn.sprite = images[currentIndex];
@@ -110,11 +112,14 @@ public class LandscapeAdAnimationVariant : MonoBehaviour
 
     private void InitState()
     {
-        pilot.SetLocalPositionAndRotation(new Vector2(0, yOffset),pilot.rotation);
-        AdIcon.localScale = Vector3.zero;
-        AdIcon.SetLocalPositionAndRotation(new Vector2(0, yOffset),pilot.rotation);
-        buttonCta.localScale = Vector3.zero;
-        AdDetails.localScale = Vector3.zero;
+        pilot.SetLocalPositionAndRotation(new Vector2(moveDistance, yOffset),pilot.rotation);
+        AdIcon.localScale = Vector3.one * 2;
+        AdIcon.SetLocalPositionAndRotation(new Vector2(0, 0),pilot.rotation);
+        buttonCta.SetLocalPositionAndRotation(new Vector2(moveDistance, buttonCta.transform.localPosition.y),buttonCta.rotation);
+        buttonCta.localScale = Vector3.one;
+        // AdDetails.localScale = Vector3.one;
+        AdDetails.gameObject.SetActive(false);
+        AdDetails.SetLocalPositionAndRotation(new Vector2(0, 0),AdDetails.rotation);
         imageIn.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
         imageOut.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
         ctaText.text = "";
@@ -139,7 +144,6 @@ public class LandscapeAdAnimationVariant : MonoBehaviour
                 }
             });
         }
-
     }
     void ConvertTextureToSprite(Texture2D texture, Action<Sprite> OnSpriteConverted)
     {
