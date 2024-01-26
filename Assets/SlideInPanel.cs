@@ -51,7 +51,7 @@ public class SlideInPanel : MonoBehaviour
 
     private void GetBigImageSprites()
     {
-        bigImageTextures = GetComponentInParent<NativeAdHolder>().adDisplay.BigMediaImages;
+        // bigImageTextures = GetComponentInParent<NativeAdHolder>().adDisplay.BigMediaImages;
 
         if(bigImageTextures == null || bigImageTextures.Count <= 0) return;
 

@@ -27,13 +27,13 @@ public class LandscapeAdAnimationVariant2 : MonoBehaviour
     private float slideDuration = 1.5f;
     public float yOffset;
     NativeAdHolder nativeAdHolder;
+    float transitionDuration = 14/4;
+    float refreshTime = 15;
 
     private void Awake() 
     {
         dynamicADFormatHandler = GetComponent<DynamicADFormatHandler>();
         targetCtaString = dynamicADFormatHandler?.adCallToActionTxt.text;
-
-        
     }
 
     private void OnEnable() 
@@ -43,37 +43,40 @@ public class LandscapeAdAnimationVariant2 : MonoBehaviour
     }
     IEnumerator Start()
     {
+        AnimUtils.DoPunchScale(AdIcon.gameObject,.5f, .5f);
         GetBigImageSprites();
-        yield return new WaitForSeconds(.1f);
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(AdIcon.DOPunchScale(Vector3.one * .1f,.5f,0,0));
-        mySequence.Append(AdIcon.DOScale(0, .5f));
-        // mySequence.Append(AdDetails.DOScale(1,0.3f));
-        // mySequence.Append(AdDetails.DOPunchScale(Vector3.one * .05f,.5f,0,0));
-        // mySequence.Insert(0,buttonCta.DOLocalMoveX(0,0.3f));
-        // mySequence.Append(DOTween.To(()=> ctaString, x=>ctaString = x,targetCtaString, .5f).SetEase(Ease.InSine)).OnUpdate(()=>
-        // {
-        //     ctaText.text = ctaString;
-        // });
-        mySequence.InsertCallback(1,MyCallback);
+        yield return new WaitForSeconds(.5f);
+        AnimUtils.DoScale(AdIcon, Vector3.zero, 0.2f);
+        yield return new WaitForSeconds(.5f);
+        // AdDetails.gameObject.SetActive(true);
+        // yield return new WaitForSeconds(slideDuration); 
+        // AnimUtils.MoveLocal(AdDetails, new Vector3(0, AdDetails.localPosition.y, AdDetails.position.z), slideDuration);
+        AnimUtils.DoMoveLocal(buttonCta, new Vector3(0, buttonCta.localPosition.y, buttonCta.position.z), slideDuration, this);
+        AnimUtils.DoMoveLocal(pilot, new Vector2(0,yOffset), slideDuration, this);  
+        MyCallback();
+        // Sequence mySequence = DOTween.Sequence();
+        // mySequence.Append(AdIcon.DOPunchScale(Vector3.one * .1f,.5f,0,0));
+        // mySequence.Append(AdIcon.DOScale(0, .5f));
+        // mySequence.InsertCallback(1,MyCallback);
     }
 
     private IEnumerator MyNewMethod()
     {
         int currentIndex = 0;
         int count = 0;
-        AdDetails.DOLocalMoveX(0, .01f);
-        AdDetails.gameObject.SetActive(true);
-        pilot.DOLocalMoveX(0,slideDuration);    
-        buttonCta.DOLocalMoveX(0,slideDuration);
-        yield return new WaitForSeconds(slideDuration); 
+        // AdDetails.DOLocalMoveX(0, .01f);
+        // pilot.DOLocalMoveX(0,slideDuration);    
+        // buttonCta.DOLocalMoveX(0,slideDuration);
+        // AdDetails.SetLocalPositionAndRotation(new Vector2(moveDistance, AdDetails.localPosition.y),AdDetails.rotation);
+        yield return new WaitForSeconds(transitionDuration); 
         // Initialize the first image position to the left of the screen
-        pilot.DOLocalMoveX(-moveDistance, slideDuration);
-
+        AnimUtils.DoMoveLocal(pilot, new Vector2(-moveDistance, yOffset), slideDuration, this);
+        // pilot.DOLocalMoveX(-moveDistance, slideDuration);
         imageIn.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
         imageIn.sprite = images[currentIndex];
-        imageIn.rectTransform.DOAnchorPosX(0f, slideDuration);
-        yield return new WaitForSeconds(slideDuration + 1);
+        // imageIn.rectTransform.DOAnchorPosX(0f, slideDuration);
+        AnimUtils.DoAnchorMoveX(imageIn.rectTransform, 0, slideDuration,imageIn.GetComponent<MonoBehaviour>());
+        yield return new WaitForSeconds(transitionDuration);
         pilot.SetLocalPositionAndRotation(new Vector2(moveDistance, yOffset),pilot.rotation);
         while (count < images.Count - 1)
         {
@@ -82,32 +85,37 @@ public class LandscapeAdAnimationVariant2 : MonoBehaviour
             
             // Move out to the left
             imageOut.rectTransform.anchoredPosition = new Vector2(0, yOffset);
-            imageOut.rectTransform.DOAnchorPosX(-moveDistance, slideDuration);
-
+            // imageOut.rectTransform.DOAnchorPosX(-moveDistance, slideDuration);
+            AnimUtils.DoAnchorMoveX(imageOut.rectTransform, -moveDistance, slideDuration,imageIn.GetComponent<MonoBehaviour>());
             // Prepare the next index
             int nextIndex = (currentIndex + 1) % images.Count;
 
             // Move in from the right
             imageIn.sprite = images[nextIndex];
             imageIn.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
-            imageIn.rectTransform.DOAnchorPosX(0f, slideDuration);
-
-            yield return new WaitForSeconds(slideDuration);
+            // imageIn.rectTransform.DOAnchorPosX(0f, slideDuration);
+            AnimUtils.DoAnchorMoveX(imageIn.rectTransform, 0, slideDuration,imageIn.GetComponent<MonoBehaviour>());
+            yield return new WaitForSeconds(transitionDuration);
 
             currentIndex = nextIndex;
             count++;
         }
         // pilot.DOLocalMoveX(0,1,true);  
-        yield return new WaitForSeconds(slideDuration);
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(imageIn.rectTransform.DOAnchorPosX(-moveDistance, slideDuration));
-        mySequence.Insert(0,pilot.DOLocalMoveX(0,slideDuration));
-        mySequence.InsertCallback(3,MyCallback);
+        yield return new WaitForSeconds(transitionDuration);
+        // Sequence mySequence = DOTween.Sequence();
+        AnimUtils.DoAnchorMoveX(imageIn.rectTransform, -moveDistance, slideDuration,imageIn.GetComponent<MonoBehaviour>());
+        // mySequence.Append(imageIn.rectTransform.DOAnchorPosX(-moveDistance, slideDuration));
+        // mySequence.Insert(0,pilot.DOLocalMoveX(0,slideDuration));
+        AnimUtils.DoMoveLocal(pilot, new Vector2(0, yOffset), slideDuration, this);
+        // mySequence.InsertCallback(3,MyCallback);
+        // yield return new WaitForSeconds(slideDuration);
+        MyCallback();
     }
 
     private void MyCallback()
     {
-        StartCoroutine(MyNewMethod());
+        if(images.Count > 0)
+            StartCoroutine(MyNewMethod());
     }
 
     private void InitState()
@@ -118,8 +126,8 @@ public class LandscapeAdAnimationVariant2 : MonoBehaviour
         buttonCta.SetLocalPositionAndRotation(new Vector2(moveDistance, buttonCta.transform.localPosition.y),buttonCta.rotation);
         buttonCta.localScale = Vector3.one;
         // AdDetails.localScale = Vector3.one;
-        AdDetails.gameObject.SetActive(false);
-        AdDetails.SetLocalPositionAndRotation(new Vector2(0, 0),AdDetails.rotation);
+        // AdDetails.gameObject.SetActive(false);
+        // AdDetails.SetLocalPositionAndRotation(new Vector2(moveDistance, AdDetails.localPosition.y),AdDetails.rotation);
         imageIn.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
         imageOut.rectTransform.anchoredPosition = new Vector2(moveDistance, yOffset);
         ctaText.text = "";

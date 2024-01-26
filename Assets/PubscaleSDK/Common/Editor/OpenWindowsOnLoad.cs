@@ -12,13 +12,10 @@ namespace PubScale.SdkOne
 
             if (settings == null)
             {
-                PubEditorUX.CheckResourcesFolderInCommon();
-
-                settings = ScriptableObject.CreateInstance<PubScaleSettings>();
-                AssetDatabase.CreateAsset(settings, PubEditorUX.PackageSettingsPath);
+                settings = PubEditorUX.CreateAndSavePubScaleSettings();
             }
 
-            if (settings.IsFirstTimeUsingTheAsset)
+            if (settings != null && settings.IsFirstTimeUsingTheAsset)
             {
                 EditorApplication.delayCall += PubScaleWindow.OpenWindow;
             }

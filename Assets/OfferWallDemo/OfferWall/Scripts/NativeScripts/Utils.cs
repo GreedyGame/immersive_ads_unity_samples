@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 namespace PubScale.Common
@@ -25,6 +26,26 @@ namespace PubScale.Common
         public static string GetStringFromEnum(AndroidJavaObject initErrorJavaObject)
         {
             return initErrorJavaObject.Get<string>("name");
+        }
+        public static string GetAndroidAdvertiserId()
+        {
+            string advertisingID = "";
+            try
+            {
+                AndroidJavaClass up = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
+                AndroidJavaObject currentActivity = up.GetStatic<AndroidJavaObject> ("currentActivity");
+                AndroidJavaClass client = new AndroidJavaClass ("com.google.android.gms.ads.identifier.AdvertisingIdClient");
+                AndroidJavaObject adInfo = client.CallStatic<AndroidJavaObject> ("getAdvertisingIdInfo", currentActivity);
+        
+                advertisingID = adInfo.Call<string> ("getId").ToString();  
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            Debug.Log("Advertising ID" + advertisingID);
+            return advertisingID;
         }
     }
 }

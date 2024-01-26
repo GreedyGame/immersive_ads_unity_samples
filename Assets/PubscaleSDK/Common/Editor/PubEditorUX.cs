@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.IO;
 
 namespace PubScale.SdkOne
 {
@@ -14,18 +15,29 @@ namespace PubScale.SdkOne
 
         #region SDK_SETTINGS
 
-        public const string PackageSettingsPath = RootPath + "Common/Resources/PubScaleSettings.asset";
+        public static string PackageSettingsPath
+        {
+            get { return Path.Combine(RootPath, "Common/Resources/PubScaleSettings.asset"); }
+        }
+
         public const string PackageCommonFolder = "Common";
         public const string PackageSettingsFolderPath = RootPath + "Common/Resources";
 
+
+        public static PubScaleSettings CreateAndSavePubScaleSettings()
+        {
+            CheckResourcesFolderInCommon();
+
+            PubScaleSettings psSettings = ScriptableObject.CreateInstance<PubScaleSettings>();
+            AssetDatabase.CreateAsset(psSettings, PubEditorUX.PackageSettingsPath);
+            AssetDatabase.SaveAssets();
+
+            return psSettings;
+        }
+
         #endregion
 
-
-        //  public const string imagePath = RootPath + "Common/Images/pubscale_logo_720.png";
         public const string imageName = "pubscale_logo_720";
-
-
-        public const string packageName = "SDK ONE";
 
         public const float DEF_LABEL_WIDTH = 160;
         static Color PubScaleGreen = new Color(0.184f, 0.803f, 0.694f);

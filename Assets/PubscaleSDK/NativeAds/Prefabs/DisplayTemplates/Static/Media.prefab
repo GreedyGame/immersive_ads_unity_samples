@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7401433334426651390}
   - component: {fileID: 5932616607732021596}
   m_Layer: 5
-  m_Name: imageTextures
+  m_Name: BigImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 38.084995}
-  m_SizeDelta: {x: 0, y: -80.77001}
+  m_AnchoredPosition: {x: 2.899994, y: 41}
+  m_SizeDelta: {x: -71.84656, y: -95.71313}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5901085908473845715
 CanvasRenderer:
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+  m_Color: {r: 0.39607847, g: 0.79215693, b: 0.69803923, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7970584163797047523}
   - component: {fileID: 5486836227398354897}
   m_Layer: 5
-  m_Name: star
+  m_Name: StarImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4185396972741909990}
   - component: {fileID: 7866989976258736834}
   m_Layer: 5
-  m_Name: starTypeText
+  m_Name: StarTypeTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 7689432685556621517}
   - component: {fileID: 7777811833885084929}
   m_Layer: 5
-  m_Name: adChoicesImg
+  m_Name: AdChoicesImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,16 +250,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7689432685556621504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7689432685881214397}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -10, y: -5}
-  m_SizeDelta: {x: 15, y: 15}
+  m_SizeDelta: {x: 30, y: 15}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7689432685556621516
 CanvasRenderer:
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -7318495721881960540, guid: f4b6e6919b611f14e882ab07ac3cde4d,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 709368648, guid: e26a3a648f81fba4a9dab225d19f9896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DisplayTemplateID: 8
   adHeadlineTxt: {fileID: 7689432685987337154}
   adCallToActionTxt: {fileID: 7689432687347212277}
   adAdvertiserTxt: {fileID: 7689432687281279570}
@@ -396,12 +397,14 @@ MonoBehaviour:
   adIconImgHolder: {fileID: 7689432686328175451}
   adIconImg: {fileID: 7689432686988814022}
   adChoicesImg: {fileID: 7689432685556621517}
+  adTagImg: {fileID: 7689432686154764476}
   imageTextures: {fileID: 7401433334426651390}
   starRatingTxt: {fileID: 5601284667841531555}
   starRatingStroke: {fileID: 7689432685676891701}
   starRatingFill: {fileID: 7689432686679419126}
   AdIconDarkBgTint: {r: 0, g: 0, b: 0, a: 0.5}
   AdIconLightBgTint: {r: 1, g: 1, b: 1, a: 0.5}
+  DisableAnimation: 0
   Show_adCallToActionTxt: 1
   Show_adAdvertiserTxt: 1
   Show_bodyTxt: 0
@@ -425,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -454,12 +457,12 @@ GameObject:
   - component: {fileID: 7689432685676891698}
   - component: {fileID: 7689432685676891701}
   m_Layer: 5
-  m_Name: starRatingStroke
+  m_Name: StarRatingStroke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7689432685676891700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -527,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7689432685818590696}
   m_Layer: 5
-  m_Name: starRatingVisual
+  m_Name: StarTypeVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +569,7 @@ GameObject:
   - component: {fileID: 7689432685881214394}
   - component: {fileID: 7689432685881214395}
   m_Layer: 5
-  m_Name: Holder
+  m_Name: AdInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,9 +586,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7689432686849130457}
   - {fileID: 7689432686154764478}
   - {fileID: 7689432685556621505}
-  - {fileID: 7689432686849130457}
   m_Father: {fileID: 7689432685675207683}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -644,7 +647,7 @@ GameObject:
   - component: {fileID: 7689432685987337154}
   - component: {fileID: 7689432685987337157}
   m_Layer: 5
-  m_Name: adHeadlineTxt
+  m_Name: AdHeadlineTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,8 +701,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dummy Native Ad
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 471c6ba3a9c318447b075696496c76b3, type: 2}
+  m_sharedMaterial: {fileID: 1839422294916115162, guid: 471c6ba3a9c318447b075696496c76b3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -814,7 +818,7 @@ GameObject:
   - component: {fileID: 7689432686154764476}
   - component: {fileID: 7689432686154764479}
   m_Layer: 5
-  m_Name: adTag
+  m_Name: AdTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,15 +832,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7689432686154764465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7689432685881214397}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -5}
+  m_AnchoredPosition: {x: 6, y: -5}
   m_SizeDelta: {x: 30, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7689432686154764477
@@ -902,7 +906,7 @@ GameObject:
   - component: {fileID: 7689432686328175448}
   - component: {fileID: 7689432686328175451}
   m_Layer: 5
-  m_Name: adIconImgHolder
+  m_Name: AdIconImgHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -976,7 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7689432686385033251}
   m_Layer: 5
-  m_Name: Appdetails
+  m_Name: AdDetails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,12 +1019,12 @@ GameObject:
   - component: {fileID: 7689432686679419127}
   - component: {fileID: 7689432686679419126}
   m_Layer: 5
-  m_Name: starRatingFill
+  m_Name: StarRatingFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7689432686679419113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1090,7 +1094,7 @@ GameObject:
   - component: {fileID: 2925743969325702819}
   - component: {fileID: 2093969839922895606}
   m_Layer: 5
-  m_Name: Padding
+  m_Name: AdInfoHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1110,7 +1114,7 @@ RectTransform:
   - {fileID: 7689432686385033251}
   - {fileID: 7689432686913874168}
   m_Father: {fileID: 7689432685881214397}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1167,7 +1171,7 @@ GameObject:
   - component: {fileID: 7689432686913874054}
   - component: {fileID: 7689432686913874169}
   m_Layer: 5
-  m_Name: Button_Cta
+  m_Name: ButtonCta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1244,7 +1248,7 @@ GameObject:
   - component: {fileID: 7689432686988813883}
   - component: {fileID: 7689432686988814022}
   m_Layer: 5
-  m_Name: adIconImg
+  m_Name: AdIconImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1333,7 +1337,7 @@ GameObject:
   - component: {fileID: 7689432687281279570}
   - component: {fileID: 7689432687281279573}
   m_Layer: 5
-  m_Name: adAdvertiserTxt
+  m_Name: AdAdvertiserTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,8 +1391,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: pubscale
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 471c6ba3a9c318447b075696496c76b3, type: 2}
+  m_sharedMaterial: {fileID: 1839422294916115162, guid: 471c6ba3a9c318447b075696496c76b3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1503,7 +1508,7 @@ GameObject:
   - component: {fileID: 7689432687347212277}
   - component: {fileID: 7689432687347212276}
   m_Layer: 5
-  m_Name: adCallToActionTxt
+  m_Name: AdCtaTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1557,8 +1562,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: DUMMY AD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 471c6ba3a9c318447b075696496c76b3, type: 2}
+  m_sharedMaterial: {fileID: 1839422294916115162, guid: 471c6ba3a9c318447b075696496c76b3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1583,7 +1589,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 21.4
+  m_fontSize: 22
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1711,7 +1717,7 @@ GameObject:
   - component: {fileID: 3798535524581068602}
   - component: {fileID: 5601284667841531555}
   m_Layer: 5
-  m_Name: starRatingTxt
+  m_Name: StarRatingTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1765,8 +1771,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4.5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 471c6ba3a9c318447b075696496c76b3, type: 2}
+  m_sharedMaterial: {fileID: 1839422294916115162, guid: 471c6ba3a9c318447b075696496c76b3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

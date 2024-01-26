@@ -21,7 +21,7 @@ namespace PubScale.SdkOne
 
 
 
-        const string WindowTitle = "PubScale : " + PubEditorUX.packageName;
+        const string WindowTitle = "PubScale SDK";
         GUIStyle textStyle;
         GUIStyle linkStyle;
         Texture image;
@@ -116,8 +116,7 @@ namespace PubScale.SdkOne
 
             if (psSettings == null)
             {
-                psSettings = ScriptableObject.CreateInstance<PubScaleSettings>();
-                AssetDatabase.CreateAsset(psSettings, PubEditorUX.PackageSettingsPath);
+                psSettings = PubEditorUX.CreateAndSavePubScaleSettings();
             }
 
             PubScaleSettings.Instance = (PubScaleSettings)AssetDatabase.LoadAssetAtPath(PubEditorUX.PackageSettingsPath, typeof(PubScaleSettings));
@@ -189,15 +188,38 @@ namespace PubScale.SdkOne
 
                     if (selection == 0)
                     {
-                        EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 40;
+                        EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH;
 
                         using (new EditorGUILayout.VerticalScope(GUI.skin.box))
                         {
-                            string pre = psSettings.AppId;
-                            psSettings.AppId = EditorGUILayout.TextField("PubScale APP ID:", psSettings.AppId);
+                            string preID = string.Empty;
+                            string appIDHolder = string.Empty;
 
-                            if (IsStringChanged(pre, psSettings.AppId))
+                            if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS)
+                            {
+                                appIDHolder = psSettings.GetIOSAppID();
+                                preID = appIDHolder;
+                                appIDHolder = DisplayAppIDField(appIDHolder, "PubScale iOS APP ID: ");
+                                psSettings.SetIOSAppID(appIDHolder);
+
+                            }
+                            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
+                            {
+                                appIDHolder = psSettings.GetAndroidAppID();
+                                preID = appIDHolder;
+                                appIDHolder = DisplayAppIDField(appIDHolder, "PubScale Android APP ID: ");
+                                psSettings.SetAndroidAppID(appIDHolder);
+                            }
+                            else
+                            {
+                                EditorGUILayout.LabelField("Current Build Target is Not Supported");
+                                EditorGUILayout.Space();
+                                EditorGUILayout.LabelField("Please switch to Android or IOS");
+                            }
+
+                            if (IsStringChanged(preID, appIDHolder))
                                 changesDetected = true;
+
                         }
 
                         EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 40;
@@ -208,61 +230,77 @@ namespace PubScale.SdkOne
 
                         using (new EditorGUILayout.VerticalScope(GUI.skin.box))
                         {
-                            PubEditorUX.DisplayHeading("NATIVE ADS");
+
+                            PubEditorUX.DisplayHeading("IMMERSIVE ADS");
 
                             EditorGUILayout.BeginHorizontal();
 
-                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 60;
+                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH - 70;
 
                             bool preBooleanSettingVal = false;
 
                             preBooleanSettingVal = psSettings.UseTestMode;
-                            psSettings.UseTestMode = EditorGUILayout.Toggle("Use Test Mode:", psSettings.UseTestMode);
+                            psSettings.UseTestMode = EditorGUILayout.Toggle("Use Test Ads:", psSettings.UseTestMode);
 
                             if (preBooleanSettingVal != psSettings.UseTestMode)
                                 changesDetected = true;
 
-                            // if (psSettings.UseTestMode == false)
-                            // {
-                            //     GUILayout.FlexibleSpace();
 
-                            //     EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 30;
-
-                            //     preBooleanSettingVal = psSettings.ShowLogsForLiveAdUnits;
-                            //     psSettings.ShowLogsForLiveAdUnits = EditorGUILayout.Toggle("Enable Plugin Logs in Release:", psSettings.ShowLogsForLiveAdUnits);
-
-                            //     if (preBooleanSettingVal != psSettings.ShowLogsForLiveAdUnits)
-                            //         changesDetected = true;
-                            // }
-
-                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 50;
+                            EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH + 60;
 
 
                             EditorGUILayout.EndHorizontal();
 
                             EditorGUILayout.Space();
+                            EditorGUILayout.Space();
+                            EditorGUILayout.Space();
 
                             EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH;
 
+                            PubEditorUX.DisplayTip("ADVANCED");
 
-#if UNITY_IOS
-                        string preFallbackIOS = psSettings.Fallback_NativeAdID_IOS;
-                        psSettings.Fallback_NativeAdID_IOS = EditorGUILayout.TextField("Fallback Native ID IOS: ", psSettings.Fallback_NativeAdID_IOS);
+                            EditorGUILayout.Space();
 
-                        if (IsStringChanged(preFallbackIOS, psSettings.Fallback_NativeAdID_IOS))
-                            changesDetected = true;
-#else
+                            if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS)
+                            {
+                                string preFallbackIOS = psSettings.Fallback_NativeAdID_IOS;
+                                psSettings.Fallback_NativeAdID_IOS = EditorGUILayout.TextField("Default Native ID IOS: ", psSettings.Fallback_NativeAdID_IOS);
 
-                            string preFallbackAnd = psSettings.Fallback_NativeAdID_Android;
-                            psSettings.Fallback_NativeAdID_Android = EditorGUILayout.TextField("Fallback Native ID Android: ", psSettings.Fallback_NativeAdID_Android);
 
-                            if (IsStringChanged(preFallbackAnd, psSettings.Fallback_NativeAdID_Android))
-                                changesDetected = true;
-#endif
+                                if (!string.IsNullOrEmpty(psSettings.Fallback_NativeAdID_IOS))
+                                {
+                                    string preTrim = psSettings.Fallback_NativeAdID_IOS;
+                                    psSettings.Fallback_NativeAdID_IOS = psSettings.Fallback_NativeAdID_IOS.Trim();
+                                    string postTrim = psSettings.Fallback_NativeAdID_IOS;
+
+                                    ShowTrimFeedback(nameof(psSettings.Fallback_NativeAdID_IOS), preTrim, postTrim);
+                                }
+
+                                if (IsStringChanged(preFallbackIOS, psSettings.Fallback_NativeAdID_IOS))
+                                    changesDetected = true;
+                            }
+                            else
+                            {
+
+                                string preFallbackAnd = psSettings.Fallback_NativeAdID_Android;
+                                psSettings.Fallback_NativeAdID_Android = EditorGUILayout.TextField("Default Native ID Android: ", psSettings.Fallback_NativeAdID_Android);
+
+                                if (!string.IsNullOrEmpty(psSettings.Fallback_NativeAdID_Android))
+                                {
+                                    string preTrim = psSettings.Fallback_NativeAdID_Android;
+                                    psSettings.Fallback_NativeAdID_Android = psSettings.Fallback_NativeAdID_Android.Trim();
+                                    string postTrim = psSettings.Fallback_NativeAdID_Android;
+
+                                    ShowTrimFeedback(nameof(psSettings.Fallback_NativeAdID_Android), preTrim, postTrim);
+                                }
+
+                                if (IsStringChanged(preFallbackAnd, psSettings.Fallback_NativeAdID_Android))
+                                    changesDetected = true;
+                            }
 
                             EditorGUIUtility.labelWidth = PubEditorUX.DEF_LABEL_WIDTH;
 
-                            PubEditorUX.DisplayTip("Used in case there is delay in ad config from server");
+                            // PubEditorUX.DisplayTip("Used in case there is delay in ad config from server");
 
                             EditorGUILayout.Space();
 
@@ -276,17 +314,9 @@ namespace PubScale.SdkOne
                         {
                             EditorGUILayout.Space();
 
-                            if (GUILayout.Button("Integration Docs"))
+                            if (GUILayout.Button("Documentation"))
                             {
-                                Application.OpenURL("https://greedygame.github.io/sdkone-unity_native_ads_plugin/");
-                            }
-
-                            EditorGUILayout.Space();
-                            EditorGUILayout.Space();
-
-                            if (GUILayout.Button("Scripting API"))
-                            {
-                                Application.OpenURL("https://github.com/GreedyGame/sdkone-unity_native_ads_plugin/wiki");
+                                Application.OpenURL("https://pubscale.gitbook.io/immersive-ads-sdk/");
                             }
 
                             EditorGUILayout.Space();
@@ -294,7 +324,7 @@ namespace PubScale.SdkOne
 
                             if (GUILayout.Button("Website"))
                             {
-                                Application.OpenURL("https://pubscale.com/ad-revenue-optimization-platform");
+                                Application.OpenURL("https://pubscale.com/");
                             }
 
                             EditorGUILayout.Space();
@@ -322,13 +352,19 @@ namespace PubScale.SdkOne
 
 
 
-
         bool IsStringChanged(string s1, string s2)
         {
             if (string.CompareOrdinal(s1, s2) != 0)
                 return true;
             else
                 return false;
+        }
+
+        bool showTrimOutput = false;
+        void ShowTrimFeedback(string name, string preTrim, string postTrim)
+        {
+            if (showTrimOutput && IsStringChanged(preTrim, postTrim))
+                Debug.Log(name + " Str trimmed from -" + preTrim + "- to -" + postTrim + "-");
         }
 
 
@@ -342,6 +378,22 @@ namespace PubScale.SdkOne
             }
         }
 
+
+        string DisplayAppIDField(string appID, string textFieldDisplay)
+        {
+            appID = EditorGUILayout.TextField(textFieldDisplay, appID);
+
+            if (!string.IsNullOrEmpty(appID))
+            {
+                string preTrim = appID;
+                appID = appID.Trim();
+                string postTrim = appID;
+
+                ShowTrimFeedback(nameof(appID), preTrim, postTrim);
+            }
+
+            return appID;
+        }
 
 
     }
