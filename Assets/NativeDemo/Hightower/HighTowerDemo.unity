@@ -1060,6 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e3cb5ed6d885684abce04378fbf2566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DisplayTemplateID: 0
   adHeadlineTxt: {fileID: 238781678}
   adCallToActionTxt: {fileID: 1009595539}
   adAdvertiserTxt: {fileID: 0}
@@ -1069,12 +1070,14 @@ MonoBehaviour:
   adIconImgHolder: {fileID: 1530164271}
   adIconImg: {fileID: 461902046}
   adChoicesImg: {fileID: 381667469}
+  adTagImg: {fileID: 0}
   imageTextures: {fileID: 0}
   starRatingTxt: {fileID: 0}
   starRatingStroke: {fileID: 0}
   starRatingFill: {fileID: 0}
   AdIconDarkBgTint: {r: 0, g: 0, b: 0, a: 0.5}
   AdIconLightBgTint: {r: 1, g: 1, b: 1, a: 0.5}
+  DisableAnimation: 0
   Show_adCallToActionTxt: 1
   Show_adAdvertiserTxt: 1
   Show_bodyTxt: 1
@@ -50970,13 +50973,12 @@ MonoBehaviour:
   potraitAdFormats: []
   nonMediaType: []
   canvas: {fileID: 981775398198570930}
+  DisableAnimations: 0
   AutoFetch: 1
-  UsePriorityCache: 0
   TriggerFetchWithCollider: 0
   TriggerOnCollisionWithTag: Player
   RefreshDelay: -1
-  Retries: 3
-  RetryInterval: 2
+  retryCacheRequest: 1
   AdLoaded: 0
 --- !u!1 &981775397684456935
 GameObject:
@@ -51225,13 +51227,12 @@ MonoBehaviour:
   potraitAdFormats: []
   nonMediaType: []
   canvas: {fileID: 981775397964416868}
+  DisableAnimations: 0
   AutoFetch: 1
-  UsePriorityCache: 0
   TriggerFetchWithCollider: 0
   TriggerOnCollisionWithTag: Player
   RefreshDelay: 30
-  Retries: 3
-  RetryInterval: 2
+  retryCacheRequest: 1
   AdLoaded: 0
 --- !u!1 &981775398453364017
 GameObject:
@@ -51462,21 +51463,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatusVisualiser
       objectReference: {fileID: 0}
+    - target: {fileID: 1492878492716443015, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 155
       objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4976951165300883688, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_textAlignment
@@ -51507,24 +51512,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7430659857759952264, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430659857759952264, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: nativeAdHolder
       value: 
       objectReference: {fileID: 981775397684456934}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 405
       objectReference: {fileID: 0}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -51644,21 +51653,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatusVisualiser
       objectReference: {fileID: 0}
+    - target: {fileID: 1492878492716443015, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 155
       objectReference: {fileID: 0}
     - target: {fileID: 2556704534729081725, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4976951165300883688, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_textAlignment
@@ -51689,24 +51702,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7430659857759952264, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430659857759952264, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: nativeAdHolder
       value: 
       objectReference: {fileID: 981775398453364016}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 405
       objectReference: {fileID: 0}
     - target: {fileID: 8219966612776068737, guid: a4b5586fb7af41147b005628e251fbf3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55151,6 +55168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8132c21941a4a514b9ed75bf147a2c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DisplayTemplateID: 0
   adHeadlineTxt: {fileID: 7547496151574564315}
   adCallToActionTxt: {fileID: 7547496150062352206}
   adAdvertiserTxt: {fileID: 0}
@@ -55160,12 +55178,14 @@ MonoBehaviour:
   adIconImgHolder: {fileID: 0}
   adIconImg: {fileID: 0}
   adChoicesImg: {fileID: 6560064471540883677}
+  adTagImg: {fileID: 0}
   imageTextures: {fileID: 7547496151024096097}
   starRatingTxt: {fileID: 0}
   starRatingStroke: {fileID: 0}
   starRatingFill: {fileID: 0}
   AdIconDarkBgTint: {r: 0, g: 0, b: 0, a: 0.5}
   AdIconLightBgTint: {r: 1, g: 1, b: 1, a: 0.5}
+  DisableAnimation: 0
   Show_adCallToActionTxt: 1
   Show_adAdvertiserTxt: 1
   Show_bodyTxt: 1
@@ -55849,6 +55869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8132c21941a4a514b9ed75bf147a2c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DisplayTemplateID: 0
   adHeadlineTxt: {fileID: 8076985113538507793}
   adCallToActionTxt: {fileID: 8076985112417181488}
   adAdvertiserTxt: {fileID: 0}
@@ -55858,12 +55879,14 @@ MonoBehaviour:
   adIconImgHolder: {fileID: 8076985112561775149}
   adIconImg: {fileID: 8076985113506445514}
   adChoicesImg: {fileID: 8076985114483815995}
+  adTagImg: {fileID: 0}
   imageTextures: {fileID: 8076985113482446500}
   starRatingTxt: {fileID: 8076985113908933600}
   starRatingStroke: {fileID: 8076985114430268851}
   starRatingFill: {fileID: 8076985113680878365}
   AdIconDarkBgTint: {r: 0, g: 0, b: 0, a: 0.5}
   AdIconLightBgTint: {r: 1, g: 1, b: 1, a: 0.5}
+  DisableAnimation: 0
   Show_adCallToActionTxt: 1
   Show_adAdvertiserTxt: 1
   Show_bodyTxt: 1
