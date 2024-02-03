@@ -28,7 +28,8 @@ namespace PubScale.SdkOne.NativeAds
         protected SerializedProperty Prop_TriggerTag;
         protected SerializedProperty Prop_UsePriorityCache;
         protected SerializedProperty Prop_RefreshDelay;
-        protected SerializedProperty Prop_Retries;
+
+        protected SerializedProperty Prop_DisableAnimations;
 
         protected PubEditorUXState prevEditorGUIState = new PubEditorUXState();
 
@@ -49,14 +50,15 @@ namespace PubScale.SdkOne.NativeAds
             Prop_AutoFetch = serializedObject.FindProperty(nameof(targetHolder.AutoFetch));
             Prop_TriggerFetch = serializedObject.FindProperty(nameof(targetHolder.TriggerFetchWithCollider));
             Prop_TriggerTag = serializedObject.FindProperty(nameof(targetHolder.TriggerOnCollisionWithTag));
-            Prop_UsePriorityCache = serializedObject.FindProperty(nameof(targetHolder.UsePriorityCache));
-            Prop_RefreshDelay = serializedObject.FindProperty(nameof(targetHolder.RefreshDelay));
-            Prop_Retries = serializedObject.FindProperty(nameof(targetHolder.Retries));
+
+            Prop_RefreshDelay = serializedObject.FindProperty("RefreshDelay");
 
             Prop_UseExtraFormats = serializedObject.FindProperty(nameof(targetHolder.UseExtraFormats));
             Prop_MoreDisplayLandscape = serializedObject.FindProperty(nameof(targetHolder.landscapeAdFormats));
             Prop_MoreDisplayPotrait = serializedObject.FindProperty(nameof(targetHolder.potraitAdFormats));
             Prop_MoreDisplayNoBigMedia = serializedObject.FindProperty(nameof(targetHolder.nonMediaType));
+
+            Prop_DisableAnimations = serializedObject.FindProperty(nameof(targetHolder.DisableAnimations));
 
         }
 
@@ -73,14 +75,23 @@ namespace PubScale.SdkOne.NativeAds
             {
                 PubEditorUX.DisplayHeading("AD PLACEMENT INFO");
 
-                PubEditorUX.DisplayString(Prop_AdTag, new GUIContent("Ad Placement Tag:"));
+                EditorGUILayout.Space();
+
+                PubEditorUX.AddToLabelWidth(10);
+                PubEditorUX.DisplayTip("Assign a unique ad tag for this placement");
+                PubEditorUX.DisplayTip("Examples: main_menu_bottom , game_billboard_1");
+                // PubEditorUX.DisplayTip("1. Performance tracking of this placement");
+                // PubEditorUX.DisplayTip("2. Dynamic configuration");
 
                 EditorGUILayout.Space();
-                PubEditorUX.DisplayToggle(Prop_UsePriorityCache, new GUIContent("Is On Screen For Short Time:"));
-                PubEditorUX.DisplayTip("Enable this for short time placements~ e.g. Level loading screen");
-                PubEditorUX.DisplayTip("1. Placement is given priority in the caching system.");
-                PubEditorUX.DisplayTip("2. If Cached ad is available, it will be shown instantly.");
-                PubEditorUX.DisplayTip("3. New ad request and retry logic will NOT be used.");
+
+                PubEditorUX.ReduceLabelWidthBy(40);
+
+                PubEditorUX.DisplayString(Prop_AdTag, new GUIContent("Ad Placement Tag:"));
+
+                PubEditorUX.AddToLabelWidth(30);
+
+                EditorGUILayout.Space();
 
             }
 
@@ -168,7 +179,8 @@ namespace PubScale.SdkOne.NativeAds
 
                 if (Prop_AutoFetch.boolValue == false && Prop_TriggerFetch.boolValue == false)
                     PubEditorUX.DisplayTip("You will call FetchAd() from external script");
-
+                else
+                    PubEditorUX.DisplayTip("Uncheck both if you will manually call FetchAd() function");
             }
 
             EditorGUILayout.Space();
@@ -178,8 +190,40 @@ namespace PubScale.SdkOne.NativeAds
                 PubEditorUX.DisplayHeading("AD BEHAVIOUR");
 
                 PubEditorUX.DisplayFloat(Prop_RefreshDelay, new GUIContent("Refresh time after Impression: "));
+
+                float refreshValue = Prop_RefreshDelay.floatValue;
+
+                if (refreshValue < PubScaleConstants.MinRefreshDelay && refreshValue >= 0)
+                {
+                    PubEditorUX.DisplayTip("A minimum delay of " + PubScaleConstants.MinRefreshDelay + "s is recommended. The plugin will refresh ad after " + PubScaleConstants.MinRefreshDelay + "s.");
+                    EditorGUILayout.Space();
+                    EditorGUILayout.Space();
+                }
+
                 PubEditorUX.DisplayTip("To Disable Refresh use -1");
-                PubEditorUX.DisplayInt(Prop_Retries, new GUIContent("Retries on Ad Fail: "));
+                EditorGUILayout.Space();
+            }
+
+            EditorGUILayout.Space();
+
+            using (new EditorGUILayout.VerticalScope(GUI.skin.box))
+            {
+                PubEditorUX.DisplayHeading("AD PRESENTATION");
+
+                bool prevDisableAnimation = Prop_DisableAnimations.boolValue;
+
+                PubEditorUX.DisplayToggle(Prop_DisableAnimations, new GUIContent("Disable All Animations"));
+
+                if (Prop_DisableAnimations.boolValue != prevDisableAnimation)
+                {
+                    targetHolder.SetAllAnimationDisableState(Prop_DisableAnimations.boolValue);
+                    EditorUtility.SetDirty(targetHolder);
+
+                    foreach (NativeAdDisplayHandler nad in targetHolder.landscapeAdFormats) { EditorUtility.SetDirty(nad); }
+                    foreach (NativeAdDisplayHandler nad in targetHolder.potraitAdFormats) { EditorUtility.SetDirty(nad); }
+                    foreach (NativeAdDisplayHandler nad in targetHolder.nonMediaType) { EditorUtility.SetDirty(nad); }
+
+                }
             }
 
             EditorGUILayout.Space();

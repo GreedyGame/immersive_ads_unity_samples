@@ -15,5 +15,7 @@ MonoBehaviour:
   UseTestMode: 1
   Fallback_NativeAdID_Android: ca-app-pub-4073866383873410/6418041137
   Fallback_NativeAdID_IOS: 
+  AppID_Android: 50927155
+  AppID_IOS: 
   AppID: 50927155
   IsFirstTimeUsingTheAsset: 0

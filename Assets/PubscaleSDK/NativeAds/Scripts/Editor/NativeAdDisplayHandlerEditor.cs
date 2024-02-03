@@ -12,12 +12,13 @@ namespace PubScale.SdkOne.NativeAds
         protected GUIStyle styleValid;
         protected GUIStyle styleInvalid;
 
-        //   SerializedProperty Prop_AdHolder;
+        protected SerializedProperty Prop_TemplateID;
+
+        protected SerializedProperty Prop_AdTagImg;
         protected SerializedProperty Prop_AdIconHolder;
         protected SerializedProperty Prop_AdIconImg;
         protected SerializedProperty Prop_AdChoicesImg;
         protected SerializedProperty Prop_ImageTextures;
-
 
         protected SerializedProperty Prop_AdHeadlineTxt;
         protected SerializedProperty Prop_AdCallToActionTxt;
@@ -34,6 +35,7 @@ namespace PubScale.SdkOne.NativeAds
 
         protected SerializedProperty Prop_AdIconDarkBgTint;
         protected SerializedProperty Prop_AdIconLightBgTint;
+
 
 
         protected SerializedProperty Prop_Show_AdIconHolder;
@@ -55,10 +57,10 @@ namespace PubScale.SdkOne.NativeAds
         protected PubEditorUXState prevEditorGUIState = new PubEditorUXState();
 
 
-        protected bool foldableOptionalTextFields = false;
-        protected bool foldableOptionalVisualFields = false;
-        protected bool foldableShowStarRating = false;
-        protected bool foldableCustomizeVisuals = false;
+        protected bool foldableOptionalTextFields = true;
+        protected bool foldableOptionalVisualFields = true;
+        protected bool foldableShowStarRating = true;
+        protected bool foldableCustomizeVisuals = true;
 
 
         public virtual void OnEnable()
@@ -71,7 +73,9 @@ namespace PubScale.SdkOne.NativeAds
             styleInvalid = new GUIStyle();
             styleInvalid.normal.textColor = new Color(0.6f, 0f, 0f, 1f);
 
-            // Prop_AdHolder = serializedObject.FindProperty(nameof(targetDisplayer.Holder));
+            Prop_TemplateID = serializedObject.FindProperty(nameof(targetDisplayer.DisplayTemplateID));
+
+            Prop_AdTagImg = serializedObject.FindProperty(nameof(targetDisplayer.adTagImg));
             Prop_AdIconHolder = serializedObject.FindProperty(nameof(targetDisplayer.adIconImgHolder));
             Prop_AdIconImg = serializedObject.FindProperty(nameof(targetDisplayer.adIconImg));
             Prop_AdChoicesImg = serializedObject.FindProperty(nameof(targetDisplayer.adChoicesImg));
@@ -89,7 +93,6 @@ namespace PubScale.SdkOne.NativeAds
 
             Prop_AdIconDarkBgTint = serializedObject.FindProperty(nameof(targetDisplayer.AdIconDarkBgTint));
             Prop_AdIconLightBgTint = serializedObject.FindProperty(nameof(targetDisplayer.AdIconLightBgTint));
-
 
             Prop_Show_AdIconImg = serializedObject.FindProperty(nameof(targetDisplayer.Show_adIconImg));
             Prop_Show_ImageTextures = serializedObject.FindProperty(nameof(targetDisplayer.Show_imageTextures));
@@ -115,12 +118,27 @@ namespace PubScale.SdkOne.NativeAds
 
             EditorGUILayout.Space();
 
+            if (Prop_AdTagImg.objectReferenceValue == null)
+            {
+                targetDisplayer.SetAdTagImgReference();
+            }
+
+            PubEditorUX.DisplayProperty(Prop_TemplateID, new GUIContent("Template ID:"));
+
             using (new EditorGUILayout.VerticalScope(GUI.skin.box))
             {
                 PubEditorUX.DisplayHeading("REQUIRED AD FIELDS");
 
                 PubEditorUX.DisplayProperty(Prop_AdHeadlineTxt, new GUIContent("Ad Headline Text:"));
+
+                PubEditorUX.DisplayProperty(Prop_AdTagImg, new GUIContent("Ad Attribution Tag:"));
+
                 PubEditorUX.DisplayProperty(Prop_AdChoicesImg, new GUIContent("Ad Choices Icon:"));
+
+                // if (Prop_Show_AdCallToActionTxt.boolValue)
+                PubEditorUX.DisplayProperty(Prop_AdCallToActionTxt, new GUIContent("AD CTA Text:"));
+
+                // PubEditorUX.SetGraphicState(targetDisplayer.adCallToActionTxt, true);// Prop_Show_AdCallToActionTxt.boolValue);
             }
 
             EditorGUILayout.Space();
@@ -148,7 +166,6 @@ namespace PubScale.SdkOne.NativeAds
 
                         EditorGUILayout.EndHorizontal();
 
-
                         EditorGUILayout.Space();
 
                     }
@@ -171,7 +188,7 @@ namespace PubScale.SdkOne.NativeAds
                 EditorGUILayout.Space();
 
                 if (Prop_Show_ImageTextures.boolValue)
-                    PubEditorUX.DisplayProperty(Prop_ImageTextures, new GUIContent("Image Texture (Product):"));
+                    PubEditorUX.DisplayProperty(Prop_ImageTextures, new GUIContent("Big Image (Product):"));
 
                 PubEditorUX.SetGraphicState(targetDisplayer.imageTextures, Prop_Show_ImageTextures.boolValue);
 
@@ -194,11 +211,9 @@ namespace PubScale.SdkOne.NativeAds
 
                         EditorGUILayout.Space();
 
-                        PubEditorUX.ReduceLabelWidthBy(80);
-
-                        PubEditorUX.DisplayToggle(Prop_Show_AdCallToActionTxt, new GUIContent("Show CTA:"));
-
-                        PubEditorUX.AddToLabelWidth(80);
+                        // PubEditorUX.ReduceLabelWidthBy(80);
+                        // PubEditorUX.DisplayToggle(Prop_Show_AdCallToActionTxt, new GUIContent("Show CTA:"));
+                        // PubEditorUX.AddToLabelWidth(80);
 
                         GUILayout.FlexibleSpace();
 
@@ -225,7 +240,6 @@ namespace PubScale.SdkOne.NativeAds
 
                         EditorGUILayout.EndHorizontal();
 
-
                         EditorGUILayout.Space();
 
                     }
@@ -235,11 +249,6 @@ namespace PubScale.SdkOne.NativeAds
                 EditorGUILayout.EndFoldoutHeaderGroup();
 
                 EditorGUILayout.Space();
-
-                if (Prop_Show_AdCallToActionTxt.boolValue)
-                    PubEditorUX.DisplayProperty(Prop_AdCallToActionTxt, new GUIContent("AD CTA Text:"));
-
-                PubEditorUX.SetGraphicState(targetDisplayer.adCallToActionTxt, Prop_Show_AdCallToActionTxt.boolValue);
 
                 if (Prop_Show_AdAdvertiserTxt.boolValue)
                     PubEditorUX.DisplayProperty(Prop_AdAdvertiserTxt, new GUIContent("AD Advertiser Text:"));
@@ -268,13 +277,10 @@ namespace PubScale.SdkOne.NativeAds
 
             EditorGUILayout.Space();
 
-
-
             foldableShowStarRating = EditorGUILayout.BeginFoldoutHeaderGroup(foldableShowStarRating, "OPTIONAL: SHOW RATINGS");
 
             if (foldableShowStarRating)
             {
-
                 using (new EditorGUILayout.VerticalScope(GUI.skin.box))
                 {
                     PubEditorUX.DisplayHeading("OPTIONAL RATINGS DISPLAY");
@@ -358,10 +364,6 @@ namespace PubScale.SdkOne.NativeAds
             EditorGUILayout.Space();
 
             PubEditorUX.End_CustomEditor(serializedObject, prevEditorGUIState);
-
-            // EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            // EditorGUILayout.HelpBox("Native Ad Display Handler", MessageType.Info);
-
 
         }
     }

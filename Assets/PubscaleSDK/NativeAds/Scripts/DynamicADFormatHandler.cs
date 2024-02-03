@@ -16,16 +16,18 @@ namespace PubScale.SdkOne.NativeAds
         public GameObject starTypeVisuals;
         public Image singleStarImg;
         public Image ctaHolderImg;
+
         public int NumberOfAnimations = -1;
         public Animator animator;
 
+
 #if UNITY_EDITOR
 #pragma warning disable CS0649
-       public TMP_FontAsset defaultFont;
-       public bool OverrideColors = false;
-       public Color starsColor;
-       public Color ctaButtonColor;
-       public Color textColor;
+        public TMP_FontAsset defaultFont;
+        public bool OverrideColors = false;
+        public Color starsColor;
+        public Color ctaButtonColor;
+        public Color textColor;
 #pragma warning restore CS0649
 #if PUBSCALE_EFFECTS
     public bool useShineEffect = false;
@@ -124,18 +126,16 @@ namespace PubScale.SdkOne.NativeAds
             {
                 TryGetComponent(out animator);
             }
-
-            Show_StarRating = true;
-            Show_RatingAsVisual = true;
-            Show_RatingAsText = true;
         }
+
+
         public override void FillAndRegister(NativeAd nativeAd, NativeAdHolder holder, bool registerElement = true)
         {
             base.FillAndRegister(nativeAd, holder, true);
 
             var starRating = nativeAd.GetStarRating();
 
-            if (starRating > 0)
+            if (Show_StarRating && starRating > 0)
             {
                 if (Random.Range(0, 2) == 0) //randomly show stars as text or visuals
                 {
@@ -240,6 +240,9 @@ namespace PubScale.SdkOne.NativeAds
 
         public void AnimateNow()
         {
+            if (DisableAnimation)
+                return;
+
             if (NumberOfAnimations > 0)
             {
                 if (animator != null)
