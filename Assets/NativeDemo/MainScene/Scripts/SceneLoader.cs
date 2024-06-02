@@ -8,14 +8,32 @@ namespace PubScale.SdkOne.NativeAds.Sample
     /// </summary>
     public class SceneLoader : MonoBehaviour
     {
+
+        bool isClicked = false;
+
+
         /// <summary>
         /// Loads the scene according to the scene name provided
         /// </summary>
         public void LoadScene(string sceneName)
         {
-            Time.timeScale = 1;
-            Fader.LoadScene(sceneName);
+            if (isClicked == false)
+            {
+                isClicked = true;
+                Time.timeScale = 1;
 
+                if (Fader.instance != null)
+                    Fader.LoadScene(sceneName);
+                else
+                    SceneManager.LoadScene(name);
+            }
+
+        }
+
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainScene");
         }
     }
 }

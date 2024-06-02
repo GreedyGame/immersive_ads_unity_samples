@@ -19,19 +19,23 @@ namespace PubScale.SdkOne.NativeAds.Sample
         }
         public static void LoadScene(string name)
         {
-            instance.faderImg.gameObject.SetActive(true);
-           instance.faderImg.transform.DOScale(4.5f, 0.5f).From(0).SetEase(Ease.InSine).SetUpdate(true).OnComplete(()=> {
-               SceneManager.LoadScene(name);
-
-           });
+            if(instance != null)
+            {
+                instance.faderImg.gameObject.SetActive(true);
+                instance.faderImg.transform.DOScale(4.5f, 0.5f).From(0).SetEase(Ease.InSine).SetUpdate(true).OnComplete(()=> {
+                    SceneManager.LoadScene(name);
+                });
+           }
         }
         private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
-            faderImg.gameObject.SetActive(true);
-            faderImg.transform.DOScale(0, 0.5f).From(4.5f).SetEase(Ease.OutFlash).SetDelay(0.5f).SetUpdate(true).OnComplete(() => {
-                faderImg.gameObject.SetActive(false);
-
-            }); 
+            if(faderImg != null)
+            {
+                faderImg.gameObject.SetActive(true);
+                faderImg.transform.DOScale(0, 0.5f).From(4.5f).SetEase(Ease.OutFlash).SetDelay(0.5f).SetUpdate(true).OnComplete(() => {
+                    faderImg.gameObject.SetActive(false);
+                }); 
+            }
         }
     }
 }

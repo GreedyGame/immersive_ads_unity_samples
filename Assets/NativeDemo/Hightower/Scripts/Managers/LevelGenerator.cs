@@ -34,7 +34,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             haveObstacle = false;
             previousStatus = HorizontalStatus.Closed;
             this.player = player;
-            bestFloor = PlayerPrefs.GetInt("BestScore", 0);
+            bestFloor = PlayerPrefs.GetInt(PrefsHelper.Key_BestScore, 0);
             spawnPoint.position = startFloor.InitFloor(HorizontalStatus.Closed, VerticalStatus.TopOpen, false);
             if (generatorCoroutine == null)
                 generatorCoroutine = StartCoroutine(GenerateLevel());
@@ -71,7 +71,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                     {
                         Check();
                         GameObject floorObject2 = PoolingSystem.instance.Instantiate(floor, spawnPoint.position, Quaternion.identity);
-                        spawnPoint.position = new Vector3(spawnPoint.position.x +4.9f, spawnPoint.position.y , spawnPoint.position.z);
+                        spawnPoint.position = new Vector3(spawnPoint.position.x + 4.9f, spawnPoint.position.y, spawnPoint.position.z);
                         floorHandler = floorObject2.GetComponent<FloorHandler>();
                         spawnPos = floorHandler.InitFloor(HorizontalStatus.Open, VerticalStatus.TopOpen, true);
                         if (SecondSpawn)
@@ -83,12 +83,12 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                         {
                             SecondSpawn = true;
                             firstSpawn = false;
-                           floorHandler.InitFloor(HorizontalStatus.RightOpen, VerticalStatus.Closed, true);
+                            floorHandler.InitFloor(HorizontalStatus.RightOpen, VerticalStatus.Closed, true);
                             floorHandler.EnableArrow();
                             //spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 0.7f, spawnPoint.position.z);
                             floorHandler.SetFollowStatus(1);
                         }
-                      
+
                     }
                 }
                 else
@@ -137,7 +137,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         HorizontalStatus GetAndSetStatus()
         {
             HorizontalStatus wallStatus = (HorizontalStatus)UnityEngine.Random.Range(0, 4);
-        
+
             switch (previousStatus)
             {
                 case HorizontalStatus.LeftOpen:

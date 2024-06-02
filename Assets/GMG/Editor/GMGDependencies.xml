@@ -1,0 +1,10 @@
+<dependencies>
+  <androidPackages>
+	  <repositories>
+		  <repository>https://maven.google.com</repository>
+	  </repositories>
+        <androidPackage spec="androidx.browser:browser:1.4.0">
+		</androidPackage>
+  </androidPackages>
+</dependencies>
+ 

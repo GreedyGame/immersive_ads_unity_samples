@@ -7,11 +7,38 @@ using System.Collections;
 using PubScale.SdkOne;
 using PubScale.SdkOne.NativeAds.Sample;
 
+
 namespace PubScale.SdkOne.NativeAds.Hightower
 {
     public class UIManager : MonoBehaviour
     {
+
+        #region  STORE
+
+        public StoreCharacterDisplay Char1;
+        public StoreCharacterDisplay Char2;
+        public StoreCharacterDisplay Char3;
+        public StoreCharacterDisplay Char4;
+
+        public Color ClrBtnCurrentSelected;
+        public Color ClrBtnChoose;
+
+        [SerializeField] private CanvasGroup storeUI;
+
+        [SerializeField] private GameObject storeBtn;
+
+        [SerializeField] private TextMeshProUGUI storeCoinsUI;
+
+        #endregion
+
+        [Space(20)]
+
+
         #region Decalaration
+
+
+        [SerializeField] private GameObject gmgBtn;
+
         public static event Action<bool> GamePaused;
         public TextMeshProUGUI timerTxt;
         [SerializeField] private CanvasGroup gameCanvas;
@@ -40,7 +67,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         private void Awake()
         {
             NativeAdClickDisabler.ShowHideAd += NativeAdClickDisabler_ShowHideAd;
-            bestScoreTxt.text = PlayerPrefs.GetInt("BestScore", 0).ToString();
+            bestScoreTxt.text = PlayerPrefs.GetInt(PrefsHelper.Key_BestScore, 0).ToString();
             gameCanvas.gameObject.SetActive(false);
             AudioListener.volume = PlayerPrefs.GetInt("mute", 0) == 1 ? 0 : 1;
             AudioManager.isMute = PlayerPrefs.GetInt("mute", 0) == 1;
@@ -48,11 +75,15 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             canMute = true;
             Time.timeScale = 1;
             continueButton.gameObject.SetActive(false);
+
+            gmgBtn.SetActive(false);
+            storeBtn.SetActive(false);
+            storeUI.gameObject.SetActive(false);
         }
 
         private void NativeAdClickDisabler_ShowHideAd(Action<bool> obj)
         {
-           ShowHideAd = obj;
+            ShowHideAd = obj;
         }
 
         public void InitUI(int score)
@@ -64,7 +95,10 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             scoreTxt.text = score.ToString();
             //AdManager.instance.LoadInterstitialAd();
         }
+
         #endregion
+
+
         #region Events
         public void StartLevel()
         {
@@ -92,9 +126,10 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         }
         public void RestartLevel()
         {
+            PlayerPrefs.SetInt(PrefsHelper.Key_CurrentScore, GameManager.instance.GetCurrentCoins());
             AudioManager.instance.Play("button");
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-          //  AdManager.instance.ShowInterstitialAd();
+            //  AdManager.instance.ShowInterstitialAd();
             Time.timeScale = 1;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -114,10 +149,12 @@ namespace PubScale.SdkOne.NativeAds.Hightower
                 AudioManager.instance.Paused(true);
                 Time.timeScale = 0;
                 ShowHideAd?.Invoke(true);
-                DGAnimationController.AnimateBgPanel(pauseUI.gameObject, true, Complete: () => { pauseUI.interactable = true; });
+                DGAnimationController.AnimateBgPanel(pauseUI.gameObject, true, Complete: () => { pauseUI.interactable = true; gmgBtn.SetActive(true); });
             }
             else
             {
+                gmgBtn.SetActive(false);
+
                 ShowHideAd?.Invoke(false);
                 if (countDownRoutine == null)
                     countDownRoutine = StartCoroutine(CountDown());
@@ -128,8 +165,15 @@ namespace PubScale.SdkOne.NativeAds.Hightower
         public void QuitGame()
         {
             Time.timeScale = 1;
-            Fader.LoadScene("MainScene");
+
+            if (Fader.instance != null)
+                Fader.LoadScene("MainScene");
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+
         }
+
+
         IEnumerator CountDown()
         {
             pauseUI.blocksRaycasts = false;
@@ -140,7 +184,7 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             });
             countdownUI.gameObject.SetActive(true);
             countdownUI.DOFade(1, 0.3f).From(0).SetUpdate(true);
-            int timer = 3;
+            int timer = 1;
             while (timer > 0)
             {
                 countDownTxt.text = "Starts in\n" + timer;
@@ -159,12 +203,16 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             newBest.SetActive(newScore);
             gameOvertotalScoreTxt.text = scoreTxt.text;
             gameOverbestScoreTxt.text = best.ToString();
-            DGAnimationController.AnimateBgPanel(gameOverUI.gameObject, true);
+            DGAnimationController.AnimateBgPanel(gameOverUI.gameObject, true, () => { gmgBtn.SetActive(true); storeBtn.SetActive(true); });
+
         }
         public void HideLevelComplete()
         {
             ShowHideAd?.Invoke(false);
             continueButton.SetActive(false);
+            gmgBtn.SetActive(false);
+            storeBtn.SetActive(false);
+
             DGAnimationController.AnimateBgPanel(gameOverUI.gameObject, false);
         }
         public void ContinueButton(bool ans)
@@ -217,6 +265,108 @@ namespace PubScale.SdkOne.NativeAds.Hightower
             //    StartCoroutine(CountDown());
             //}
         }
+
+
+        #region STORE
+
+        public void ShowStore()
+        {
+            GameManager.instance.audioMgr.PlayMenuOpen();
+
+            gmgBtn.SetActive(false);
+            storeBtn.SetActive(false);
+            storeUI.gameObject.SetActive(true);
+
+            UpdateStoreDisplay();
+        }
+
+
+        public void UpdateStoreDisplay()
+        {
+            Char1.UpdateDisplay(this);
+            Char2.UpdateDisplay(this);
+            Char3.UpdateDisplay(this);
+            Char4.UpdateDisplay(this);
+
+            storeCoinsUI.text = GameManager.instance.GetCurrentCoins().ToString();
+        }
+
+
+        public void HideStore()
+        {
+            gmgBtn.SetActive(true);
+            storeBtn.SetActive(true);
+
+            GameManager.instance.audioMgr.PlayMenuClose();
+            storeUI.gameObject.SetActive(false);
+        }
+
+
+
+        #endregion
+
+
+        public StoreCharacterDisplay GetCurrentCharDisplay(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    return Char1;
+
+                case 2:
+                    return Char2;
+
+                case 3:
+                    return Char3;
+
+                case 4:
+                    return Char4;
+
+                default:
+                    return Char1;
+            }
+        }
+
+        public void BuyCharacter(int id)
+        {
+            StoreCharacterDisplay scd = GetCurrentCharDisplay(id);
+
+            int currentCoins = GameManager.instance.GetCurrentCoins();
+
+            if (currentCoins >= scd.Cost)
+            {
+                GameManager.instance.celebration.Play();
+                currentCoins -= scd.Cost;
+
+                storeCoinsUI.text = currentCoins.ToString();
+
+                GameManager.instance.SetCurrentCoins(currentCoins);
+
+                PlayerPrefs.SetInt(PrefsHelper.Key_PrefixCharUnlocked + id, 1);
+
+                GameManager.instance.audioMgr.PlayCharUnlock();
+
+                scd.UpdateDisplay(this);
+            }
+
+        }
+
+
+        public void SelectCharacter(int id)
+        {
+            if (id < 1 || id > 4)
+                id = 1;
+
+            PlayerPrefs.SetInt(PrefsHelper.Key_CurCharSelected, id);
+
+            Char1.UpdateDisplay(this);
+            Char2.UpdateDisplay(this);
+            Char3.UpdateDisplay(this);
+            Char4.UpdateDisplay(this);
+
+            RestartLevel();
+        }
+
         #endregion
     }
 }
