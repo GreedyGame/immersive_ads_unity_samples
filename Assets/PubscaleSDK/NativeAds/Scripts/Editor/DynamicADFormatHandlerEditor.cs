@@ -16,6 +16,8 @@ namespace PubScale.SdkOne.NativeAds
         protected SerializedProperty Prop_starTypeVisuals;
         protected SerializedProperty Prop_singleStarImg;
         protected SerializedProperty Prop_ctaHolderImg;
+
+        protected SerializedProperty Prop_DisableAnimations;
         protected SerializedProperty Prop_NumberOfAnimations;
         protected SerializedProperty Prop_animator;
 
@@ -46,6 +48,7 @@ namespace PubScale.SdkOne.NativeAds
             Prop_singleStarImg = serializedObject.FindProperty(nameof(targetDynamicDisplay.singleStarImg));
             Prop_ctaHolderImg = serializedObject.FindProperty(nameof(targetDynamicDisplay.ctaHolderImg));
 
+            Prop_DisableAnimations = serializedObject.FindProperty(nameof(targetDynamicDisplay.DisableAnimation));
             Prop_NumberOfAnimations = serializedObject.FindProperty(nameof(targetDynamicDisplay.NumberOfAnimations));
             Prop_animator = serializedObject.FindProperty(nameof(targetDynamicDisplay.animator));
 
@@ -72,15 +75,46 @@ namespace PubScale.SdkOne.NativeAds
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
+            bool prevShowStarRating = Prop_Show_StarRating.boolValue;
+            bool prevShowStartRatingText = Prop_Show_StarRatingAsText.boolValue;
+            bool prevShowStartRatingVisual = Prop_Show_StarRatingAsVisual.boolValue;
 
             base.OnInspectorGUI();
 
-
             EditorGUILayout.Separator();
 
-
-
             PubEditorUX.Start_CustomEditor(serializedObject, prevEditorGUIState);
+
+
+            bool curShowStarRating = Prop_Show_StarRating.boolValue;
+            bool curShowStartRatingText = Prop_Show_StarRatingAsText.boolValue;
+            bool curShowStartRatingVisual = Prop_Show_StarRatingAsVisual.boolValue;
+
+            if (curShowStarRating != prevShowStarRating || curShowStartRatingText != prevShowStartRatingText && curShowStartRatingVisual != prevShowStartRatingVisual)
+            {
+
+                if (targetDynamicDisplay.starTypeText != null)
+                    targetDynamicDisplay.starTypeText.gameObject.SetActive(curShowStarRating && curShowStartRatingText);
+
+                if (targetDynamicDisplay.singleStarImg != null)
+                    PubEditorUX.SetGraphicState(targetDynamicDisplay.singleStarImg, curShowStarRating && curShowStartRatingText);
+
+
+                if (targetDynamicDisplay.starTypeVisuals != null)
+                    targetDynamicDisplay.starTypeVisuals.gameObject.SetActive(curShowStarRating && curShowStartRatingVisual);
+
+                // if (curShowStartRatingText && curShowStartRatingVisual)
+                // {
+                //     if (targetDynamicDisplay.starTypeText != null)
+                //         targetDynamicDisplay.starTypeText.gameObject.SetActive(false);
+
+                //     if (targetDynamicDisplay.starTypeVisuals != null)
+                //         targetDynamicDisplay.starTypeVisuals.gameObject.SetActive(true);
+                // }
+
+                EditorUtility.SetDirty(targetDynamicDisplay);
+            }
+
 
             EditorGUILayout.Space();
             EditorGUILayout.Space();
@@ -133,18 +167,23 @@ namespace PubScale.SdkOne.NativeAds
 
                     using (new EditorGUILayout.VerticalScope(GUI.skin.box))
                     {
-                        EditorGUILayout.Space(10);
-                        PubEditorUX.DisplayTip("ANIMATIONS");
-                        PubEditorUX.DisplayProperty(Prop_NumberOfAnimations, new GUIContent("Number of Animations:"));
-                        PubEditorUX.DisplayProperty(Prop_animator, new GUIContent("Animator:"));
-
-                        EditorGUILayout.Space(10);
                         PubEditorUX.DisplayTip("FONT AND COLORS");
                         PubEditorUX.DisplayProperty(Prop_defaultFont, new GUIContent("Default Font:"));
                         PubEditorUX.DisplayProperty(Prop_OverrideColors, new GUIContent("Override Colors:"));
                         PubEditorUX.DisplayProperty(Prop_starsColor, new GUIContent("Star Colors:"));
                         PubEditorUX.DisplayProperty(Prop_ctaButtonColor, new GUIContent("Button Colors:"));
                         PubEditorUX.DisplayProperty(Prop_textColor, new GUIContent("Text Color:"));
+
+
+                        EditorGUILayout.Space(10);
+                        PubEditorUX.DisplayTip("ANIMATIONS");
+                        PubEditorUX.DisplayProperty(Prop_DisableAnimations, new GUIContent("Disable Animations:"));
+
+                        if (Prop_DisableAnimations.boolValue == false)
+                        {
+                            PubEditorUX.DisplayProperty(Prop_animator, new GUIContent("Animator:"));
+                            PubEditorUX.DisplayProperty(Prop_NumberOfAnimations, new GUIContent("Number of Animations in Animator:"));
+                        }
 
                         EditorGUILayout.Space(10);
                     }
@@ -167,9 +206,6 @@ namespace PubScale.SdkOne.NativeAds
 
             EditorGUILayout.Space();
             EditorGUILayout.Space();
-
-
-
 
 
             PubEditorUX.End_CustomEditor(serializedObject, prevEditorGUIState);

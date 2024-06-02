@@ -17,7 +17,6 @@ namespace PubScale.SdkOne.NativeAds.Sample
             {
                 instance = this;
                 UnityEngine.SceneManagement.SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-                PubScaleManager.LogHandler += NativeAdManager_LogHandler; //Subcribe to Native ad manager log event
             }
             else
                 Destroy(this.gameObject);
@@ -29,10 +28,9 @@ namespace PubScale.SdkOne.NativeAds.Sample
 
         private void OnDestroy()
         {
-            PubScaleManager.LogHandler -= NativeAdManager_LogHandler; //Unsubcribe to Native ad manager log event
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
         }
-        private void NativeAdManager_LogHandler(string obj,PubScaleLogData logData)
+        private void NativeAdManager_LogHandler(string obj, PubScaleLogData logData)
         {
             string log = "";
             foreach (var item in logData.EventData)
