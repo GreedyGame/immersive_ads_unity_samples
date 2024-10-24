@@ -1,8 +1,9 @@
 <dependencies>
   <packages>
     <package>androidx.browser:browser:1.4.0</package>
-    <package>com.google.android.gms:play-services-ads:22.0.0</package>
-    <package>com.google.android.ump:user-messaging-platform:2.0.0</package>
+    <package>androidx.constraintlayout:constraintlayout:2.1.4</package>
+    <package>com.google.android.gms:play-services-ads:23.0.0</package>
+    <package>com.google.android.ump:user-messaging-platform:2.2.0</package>
     <package>com.google.code.gson:gson:2.8.5</package>
     <package>com.pubscale.sdkone:offerwall:1.0.5</package>
   </packages>
